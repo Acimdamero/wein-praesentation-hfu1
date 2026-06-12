@@ -90,6 +90,8 @@ Ergänzend: DWI, OIV State of the World 2024, BMEL-Statistik, Vinetur (2025)
 
 ## Deployment
 
+**Live:** https://acimdamero.github.io/wein-praesentation-hfu1/
+
 Gehostet auf **GitHub Pages** (kostenlos, HTTPS). Details: [`DEPLOY.md`](DEPLOY.md).
 
 ```bash

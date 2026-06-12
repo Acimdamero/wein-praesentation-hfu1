@@ -1,88 +1,53 @@
-# Deployment – Wein HFU1 Präsentation
+# Deployment – Wein-Präsentation HFU1
 
-## 🌐 Live-Link / Live URL
+## LIVE URL
 
 **https://acimdamero.github.io/wein-praesentation-hfu1/**
 
-Öffentlich zugänglich – zum Lernen und Nachschlagen für alle.
+## Status
 
----
+| Item | Value |
+|------|-------|
+| Deployed | 12. Juni 2026 |
+| Platform | GitHub Pages (legacy, branch `main`, root `/`) |
+| Repository | https://github.com/Acimdamero/wein-praesentation-hfu1 |
+| Public | Ja |
+| HTTPS | Ja (erzwungen) |
 
-## 🇮🇩 Bahasa Indonesia
+## Verifizierung
 
-### Apa yang di-deploy?
+```bash
+curl -I https://acimdamero.github.io/wein-praesentation-hfu1/
+# HTTP/2 200
+```
 
-Situs statis (HTML, CSS, JavaScript) – presentasi interaktif tentang anggur untuk kelas HFU1.
+## Deployment-Schritte (bereits ausgeführt)
 
-### Keamanan
-
-- Tidak ada database, login, atau formulir
-- Tidak ada pengumpulan data pengguna
-- HTTPS otomatis (GitHub Pages)
-- Content Security Policy (CSP) di `index.html`
-- Leaflet dari CDN dengan Subresource Integrity (SRI)
-- Lihat `SECURITY.md` untuk detail lengkap
-
-### Keterbatasan
-
-- **Peta Jerman (tab DE-Gebiete)** membutuhkan koneksi internet (OpenStreetMap)
-- **Font Google** membutuhkan internet saat pertama kali dimuat
-- Gambar cadangan dari Wikimedia/Unsplash jika file lokal tidak ada
-
-### Cara update konten nanti
-
-1. Edit file di komputer lokal (`index.html`, `js/app.js`, `css/style.css`, gambar di `assets/`)
-2. Commit dan push ke GitHub:
+1. `.gitignore` und `.nojekyll` angelegt
+2. Git-Repository initialisiert (`main`)
+3. Öffentliches Repo erstellt: `gh repo create wein-praesentation-hfu1 --public`
+4. GitHub Pages aktiviert:
    ```bash
-   cd /path/to/wein-praesentation-hfu1
-   git add -A
-   git commit -m "Update: deskripsi perubahan"
-   git push
+   gh api repos/Acimdamero/wein-praesentation-hfu1/pages -X POST \
+     -f build_type=legacy \
+     -f 'source[branch]=main' \
+     -f 'source[path]=/'
    ```
-3. Tunggu 1–3 menit – GitHub Pages otomatis memperbarui situs
+5. Live-URL mit `curl -I` bestätigt (HTTP 200)
 
-### GitHub Pages settings
+## Updates deployen
 
-- Repository: **public**
-- Branch: **main**
-- Folder: **/ (root)**
-- File `.nojekyll` ada agar folder `_` tidak diabaikan Jekyll
+```bash
+cd /Users/acim.agwengmail.com/Projects/wein-praesentation-hfu1
+git add .
+git commit -m "Update presentation"
+git push origin main
+```
 
----
+GitHub Pages aktualisiert sich automatisch innerhalb von 1–3 Minuten.
 
-## 🇩🇪 Deutsch
+## Hinweise
 
-### Was wird gehostet?
-
-Statische Website – interaktive Wein-Präsentation für HFU1 (Länder, Gebiete, Sorten, Inhaltsstoffe, Oechsle).
-
-### Sicherheit
-
-- Keine Datenbank, kein Login, keine Formulare
-- Keine Nutzerdaten
-- HTTPS standardmäßig
-- CSP, SRI für Leaflet – Details in `SECURITY.md`
-
-### Einschränkungen
-
-- **DE-Karte** braucht Internet (OpenStreetMap-Kacheln)
-- **Google Fonts** beim ersten Laden
-- CDN-Bild-Fallbacks optional
-
-### Inhalte später aktualisieren
-
-1. Dateien lokal bearbeiten
-2. `git add`, `git commit`, `git push`
-3. Nach 1–3 Minuten ist die Live-Seite aktualisiert
-
----
-
-## Manual setup (falls `gh` nicht funktioniert)
-
-1. Auf [github.com/new](https://github.com/new) Repository `wein-praesentation-hfu1` erstellen (public)
-2. Lokal:
-   ```bash
-   git remote add origin https://github.com/Acimdamero/wein-praesentation-hfu1.git
-   git push -u origin main
-   ```
-3. GitHub → **Settings** → **Pages** → Source: branch **main**, folder **/** → Save
+- **Internet nötig** für Leaflet-Karte (OpenStreetMap) und Google Fonts
+- Alle 75 Bilder sind lokal in `assets/images/` und funktionieren offline
+- Relative Pfade (`css/`, `js/`, `assets/`) – keine Anpassung für Pages nötig
