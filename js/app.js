@@ -1881,17 +1881,19 @@ const MYTHS_FACTS = {
   },
   'tab-oechsle': {
     myths: [
-      { myth: '„Hoher Oechsle = süßer Wein."', reality: 'Oechsle misst Zucker im Most – das zeigt Reife und Qualität. Aber der Winzer entscheidet: trocken fermentieren oder Restzucker lassen.' },
+      { myth: '„Hoher Oechsle = süßer Wein."', reality: 'Oechsle misst nur den Zucker im Most vor der Gärung. Der Winzer entscheidet: alle Zucker zu Alkohol fermentieren (trocken) oder Restzucker lassen (süß). Spätlese kann trocken sein!' },
       { myth: '„Oechsle gibt es überall auf der Welt."', reality: 'Oechsle nutzen vor allem Deutschland, Österreich und die Schweiz. USA misst Brix, Frankreich Baumé, Österreich auch KMW.' },
-      { myth: '„57°Oe ist sehr hoch."', reality: '57°Oe ist nur das Minimum für Qualitätswein. Spätlese braucht ab 76°Oe, Trockenbeerenauslese ab 150°Oe – das ist wirklich hoch!' }
+      { myth: '„57°Oe ist sehr hoch."', reality: '57°Oe ist nur das Minimum für Qualitätswein. Spätlese braucht ab 76°Oe, Trockenbeerenauslese ab 150°Oe – das ist wirklich hoch!' },
+      { myth: '„Teurer Wein = immer besser."', reality: 'Höhere Prädikate brauchen reifere Trauben und mehr Arbeit – deshalb oft teurer. Aber Geschmack ist subjektiv: Kabinett kann genauso gut schmecken wie Auslese.' }
     ],
     factsTitle: 'Oechsle',
     facts: [
       { emoji: '🔬', text: '<strong>Erfinder:</strong> Christian Ferdinand Oechsle erfand das Mostgewicht ca. 1836 in Fellbach (Württemberg).' },
       { emoji: '🌡️', text: '<strong>Weinzone B:</strong> Nur Baden. Dort braucht Wein aus Deutschland min. 50°Oe – in Zone A nur 44°Oe (Lehrbuch Kap. 7).' },
+      { emoji: '🍷', text: '<strong>Nach Anreicherung:</strong> Qualitätswein braucht min. 8,5 % Vol. Alkohol und min. 3,5 g/l Gesamtsäure (Lehrbuch Kap. 7).' },
       { emoji: '❄️', text: '<strong>Eiswein:</strong> Trauben werden bei mindestens −7 °C geerntet – oft in der Nacht. Mindestens 110°Oe, sehr selten und teuer.' },
       { emoji: '🍇', text: '<strong>TBA:</strong> Trockenbeerenauslese ab 150°Oe. Trauben schrumpeln wie Rosinen – extrem süß und konzentriert.' },
-      { emoji: '📏', text: '<strong>1 °Oe =</strong> 1 Gramm mehr als 1 Liter Wasser wiegt. 80°Oe bedeutet: Most ist 80 g/l schwerer als Wasser.' }
+      { emoji: '📏', text: '<strong>1 °Oe =</strong> 1 Gramm mehr als 1 Liter Wasser wiegt. Ca. 2,5 g Zucker pro 1 °Oe.' }
     ]
   }
 };
@@ -1963,6 +1965,17 @@ function getOechsleClass(oe) {
   if (oe >= 47) return 'Landwein';
   return 'Wein aus Deutschland';
 }
+
+const OECHSLE_CLASS_TO_ID = {
+  'Wein aus Deutschland': 'wein',
+  Landwein: 'landwein',
+  Qualitätswein: 'qba',
+  Kabinett: 'kabinett',
+  Spätlese: 'spaetlese',
+  Auslese: 'auslese',
+  'Beerenauslese / Eiswein': 'ba',
+  Trockenbeerenauslese: 'tba'
+};
 
 function getOechsleZoneText(oe) {
   const zoneA = oe >= 44 ? 'Zone A ✓' : 'Zone A ✗';
@@ -2617,36 +2630,28 @@ function updateOechsleDisplay(oe) {
   if (liquidEl) liquidEl.style.height = pct + '%';
   if (bulbEl) bulbEl.style.bottom = `calc(${pct}% - 12px)`;
 
+  const activeClassId = OECHSLE_CLASS_TO_ID[getOechsleClass(v)] || 'wein';
   document.querySelectorAll('.oechsle-class-badge-item').forEach(b => {
-    const min = parseInt(b.dataset.min, 10);
-    b.classList.toggle('active', v >= min && isOechsleBadgeActive(v, b.dataset.id));
+    b.classList.toggle('active', b.dataset.id === activeClassId);
   });
 
-  const praedikatMins = [...document.querySelectorAll('.praedikat-card')]
-    .map(c => ({ min: parseInt(c.dataset.min, 10), el: c, set: parseInt(c.dataset.set, 10) }))
-    .sort((a, b) => b.min - a.min);
-  let activeMin = 0;
-  praedikatMins.forEach(({ min }) => { if (v >= min) activeMin = min; });
+  let bestCard = null;
+  let bestDist = Infinity;
   document.querySelectorAll('.praedikat-card').forEach(card => {
-    card.classList.toggle('active', parseInt(card.dataset.min, 10) === activeMin);
+    const min = parseInt(card.dataset.min, 10);
+    const set = parseInt(card.dataset.set, 10);
+    if (v >= min) {
+      const dist = Math.abs(v - set);
+      if (dist < bestDist) { bestDist = dist; bestCard = card; }
+    }
+  });
+  document.querySelectorAll('.praedikat-card').forEach(card => {
+    card.classList.toggle('active', card === bestCard);
   });
 
   document.querySelectorAll('.oechsle-case-row').forEach(row => {
     row.classList.toggle('active', parseInt(row.dataset.oe, 10) === v);
   });
-}
-
-function isOechsleBadgeActive(oe, id) {
-  const order = ['wein', 'landwein', 'qba', 'kabinett', 'spaetlese', 'auslese', 'ba', 'tba', 'eiswein'];
-  const idx = order.indexOf(id);
-  const level = OECHSLE_LEVELS.find(l => l.id === id);
-  if (!level) return false;
-  if (oe < level.min) return false;
-  const next = OECHSLE_LEVELS.filter(l => order.indexOf(l.id) > idx).find(l => oe < l.min);
-  if (!next && id === 'tba') return oe >= 150;
-  if (!next && id === 'eiswein') return oe >= 110 && oe < 150;
-  if (!next) return true;
-  return oe < next.min || (level.max && oe <= level.max);
 }
 
 function setOechsleValue(oe) {

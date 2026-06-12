@@ -10,6 +10,8 @@ Interaktive Wein-Präsentation für die Partnerarbeit (40 Minuten).
 
 Öffentlich zugänglich zum Lernen – 7 Tabs: Länder, deutsche Gebiete, Rebsorten, Inhaltsstoffe, Oechsle, Quellen.
 
+> **Hinweis:** `https://acimdev.github.io` zeigt 404 – das ist ein anderes GitHub-Konto ohne User-Site-Repo. Dieses Projekt liegt unter **Acimdamero** (Projekt-Site, siehe [`DEPLOY.md`](DEPLOY.md)).
+
 ## Schnellstart
 
 ```bash

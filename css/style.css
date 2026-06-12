@@ -2169,4 +2169,8 @@ body.grape-modal-open { overflow: hidden; }
   .country-info .info-grid { grid-template-columns: 1fr; }
   .de-leaflet-map { height: 400px; min-height: 400px; }
   .de-region-label span { font-size: 9px; }
+  .oechsle-simulator-realistic { padding: 1.25rem; }
+  .oechsle-readout-grid { grid-template-columns: 1fr; }
+  .oechsle-value-display { font-size: 2.25rem; }
+  .hydrometer-tube { height: 220px; }
 }
