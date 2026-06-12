@@ -1644,10 +1644,10 @@ const GENERAL_PHOTOS = {
 const INHALT_PHOTOS = {
   crossSection: GENERAL_PHOTOS.grapeAnatomy,
   diagram: {
-    local: 'assets/images/general/grape-anatomy-labeled.svg',
-    cdn: 'https://commons.wikimedia.org/wiki/Special:FilePath/Wine_grape_diagram_en.svg',
-    alt: 'Botanisches Diagramm der Weinbeere – Exocarp, Mesocarp, Samen',
-    source: 'Wikimedia Commons – LadyofHats, Public Domain'
+    local: 'assets/images/general/grape-anatomy-de.svg',
+    cdn: 'assets/images/general/grape-anatomy-de.svg',
+    alt: 'Botanisches Diagramm der Weinbeere – Schale, Fruchtfleisch, Kern, Presszonen (deutsch beschriftet)',
+    source: 'Wikimedia Commons – LadyofHats, Public Domain · Deutsche Beschriftung'
   },
   cluster: {
     local: 'assets/images/general/grape-cluster.jpg',
