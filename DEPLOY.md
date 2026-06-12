@@ -4,6 +4,14 @@
 
 **https://acimdamero.github.io/wein-praesentation-hfu1/**
 
+### Falsche vs. richtige URL
+
+| URL | Status |
+|-----|--------|
+| ❌ `https://acimdev.github.io` | 404 – anderes Konto (**AcimDev**), kein User-Site-Repo |
+| ❌ `https://acimdev.github.io/wein-praesentation-hfu1/` | 404 – Repo liegt unter **Acimdamero**, nicht AcimDev |
+| ✅ `https://acimdamero.github.io/wein-praesentation-hfu1/` | **Live** – korrekte Projekt-Site |
+
 ## Status
 
 | Item | Value |
