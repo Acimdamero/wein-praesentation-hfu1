@@ -1378,20 +1378,24 @@ main {
   box-shadow: var(--shadow);
 }
 
+.grape-detail-gallery .grape-gallery-item,
 .grape-detail-gallery .img-frame {
-  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
   padding: 0.75rem;
-  background: var(--cream);
+  background: #f5f0e8;
   border-radius: var(--radius) var(--radius) 0 0;
+  overflow: visible;
 }
 
 .grape-detail-gallery img {
-  max-width: 100%;
-  max-height: 200px;
-  width: auto;
-  height: auto;
   object-fit: contain;
-  object-position: center;
+  max-height: 280px;
+  width: 100%;
+  height: auto;
+  background: #f5f0e8;
   display: block;
 }
 
@@ -1401,6 +1405,14 @@ main {
   color: var(--text-light);
   text-align: center;
   background: var(--white);
+}
+
+.grape-image-attribution {
+  margin: 1rem 0 0;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  color: var(--text-light);
+  opacity: 0.75;
 }
 
 .grape-detail-tabs {
@@ -1510,7 +1522,7 @@ main {
 
 @media (max-width: 700px) {
   .grape-detail-gallery { grid-template-columns: 1fr; }
-  .grape-detail-gallery img { max-height: 240px; }
+  .grape-detail-gallery img { max-height: 220px; }
   .grape-detail-header h2 { font-size: 1.5rem; }
 }
 

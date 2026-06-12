@@ -1446,6 +1446,57 @@ const GRAPE_PHOTOS = {
   }
 };
 
+const GRAPE_IMAGE_SOURCES = {
+  riesling: {
+    leaf: 'Wikimedia: Rieling - leaves.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Riesling - vines.jpg (CC BY-SA)'
+  },
+  grauburgunder: {
+    leaf: 'Wikimedia: Pinot gris - leaves.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Pinot gris - vines.jpg (CC BY-SA)'
+  },
+  'mueller-thurgau': {
+    leaf: 'Wikimedia: Müller-Thurgau - leaf.jpg (CC BY-SA)',
+    vine: 'Wikimedia: HBLA Klosterneuburg Müller Thurgau 2.jpg (CC BY-SA)'
+  },
+  silvaner: {
+    leaf: 'Wikimedia: Sylvaner - leaf.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Sylvaner - vines.jpg (CC BY-SA)'
+  },
+  weissburgunder: {
+    leaf: 'Wikimedia: Pinot blanc - leaf.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Pinot blanc - vines.jpg (CC BY-SA)'
+  },
+  kerner: {
+    leaf: 'Wikimedia: Kerner - leaf.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Kerner - vines.jpg (CC BY-SA)'
+  },
+  spaetburgunder: {
+    leaf: 'Wikimedia: Vine leaf - Pinot noir.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Pinot noir - vine.jpg (CC BY-SA)'
+  },
+  dornfelder: {
+    leaf: 'Wikimedia: Dornfelder P1240238.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Dornfelder Weinsberg 20080927.jpg (CC BY-SA)'
+  },
+  lemberger: {
+    leaf: 'Wikimedia: Blaufrankisch lemberger leaf at Red Willow.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Lemberger Lehrensteinsfeld 20080928.jpg (CC BY-SA)'
+  },
+  portugieser: {
+    leaf: 'Wikimedia: HBLA Klosterneuburg Blauer Portugieser 1.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Blauer Portugieser Weinsberg 20080921.jpg (CC BY-SA)'
+  },
+  trollinger: {
+    leaf: 'Wikimedia: VIVC10823 SCHIAVA GROSSA Mature leaf 9304.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Trollinger Lehrensteinsfeld 20080928.jpg (CC BY-SA)'
+  },
+  schwarzriesling: {
+    leaf: 'Wikimedia: Meunier - leaf.jpg (CC BY-SA)',
+    vine: 'Wikimedia: Meunier - vines.jpg (CC BY-SA)'
+  }
+};
+
 const REGION_PHOTOS = {
   ahr: {
     local: 'assets/images/regions/ahr.jpg',
@@ -2486,12 +2537,24 @@ function renderGrapeDetailContent(grape) {
   const aromaTags = grape.hauptaromen.map(a => `<span class="grape-aroma-tag">${a}</span>`).join('');
   const regions = grape.anbaugebiete.join(', ');
 
+  const galleryCaptions = {
+    cluster: `Traube – reife ${grape.name}-Beeren`,
+    leaf: `Blatt (faktisch: ${grape.name})`,
+    vine: `Rebstock – ${grape.name} am Spalier`
+  };
   const gallery = ['cluster', 'leaf', 'vine'].map(kind => {
     const labels = { cluster: 'Traube', leaf: 'Blatt', vine: 'Rebstock' };
     const src = grape.images?.[kind];
     if (!src) return '';
-    return `<figure><div class="img-frame"><img class="img-perfect" src="${src}" alt="${grape.name} – ${labels[kind]}" loading="lazy"></div><figcaption>${labels[kind]}</figcaption></figure>`;
+    const caption = galleryCaptions[kind] || labels[kind];
+    return `<figure><div class="grape-gallery-item"><img src="${src}" alt="${grape.name} – ${labels[kind]}" loading="lazy"></div><figcaption>${caption}</figcaption></figure>`;
   }).join('');
+
+  const sources = GRAPE_IMAGE_SOURCES[grape.key] || {};
+  const attribution = [sources.leaf, sources.vine].filter(Boolean).join(' · ');
+  const attributionHtml = attribution
+    ? `<p class="grape-image-attribution">Bildquellen (Blatt &amp; Rebstock): ${attribution}</p>`
+    : '';
 
   const mythSection = (grape.mythos || grape.realitaet || grape.funFact) ? `
     <div class="grape-myth-box myth"><h5>❌ Mythos</h5><p>${grape.mythos || '–'}</p></div>
@@ -2548,6 +2611,7 @@ function renderGrapeDetailContent(grape) {
         <h4>Mythos vs. Realität</h4>
         ${mythSection}
       </div>
+      ${attributionHtml}
     </div>`;
 }
 
