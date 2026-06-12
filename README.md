@@ -4,6 +4,12 @@ Interaktive Wein-Präsentation für die Partnerarbeit (40 Minuten).
 
 **Status: READY** (Juni 2026 – Final Polish)
 
+## 🌐 Live URL
+
+**https://acimdamero.github.io/wein-praesentation-hfu1/**
+
+Öffentlich zugänglich zum Lernen – 7 Tabs: Länder, deutsche Gebiete, Rebsorten, Inhaltsstoffe, Oechsle, Quellen.
+
 ## Schnellstart
 
 ```bash
@@ -82,12 +88,21 @@ Echte Weinflaschen-Fotos mit Markennamen:
 
 Ergänzend: DWI, OIV State of the World 2024, BMEL-Statistik, Vinetur (2025)
 
-## GitHub Pages
+## Deployment
 
-1. Repository auf GitHub erstellen
-2. Dateien pushen
-3. Settings → Pages → Branch `main`, Ordner `/ (root)`
-4. URL: `https://<username>.github.io/wein-praesentation-hfu1/`
+Gehostet auf **GitHub Pages** (kostenlos, HTTPS). Details: [`DEPLOY.md`](DEPLOY.md).
+
+```bash
+git push origin main   # Änderungen live nach 1–3 Min.
+```
+
+## Sicherheit
+
+Statische Seite ohne Backend – keine Nutzerdaten, keine Formulare. CSP, SRI und weitere Maßnahmen: [`SECURITY.md`](SECURITY.md).
+
+## Mitwirken / Issues
+
+Fehler oder Verbesserungsvorschläge? [GitHub Issues](https://github.com/Acimdamero/wein-praesentation-hfu1/issues) öffnen oder Pull Request senden.
 
 ---
 
