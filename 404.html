@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wein – Präsentation | Acim & Erzal, HFU1</title>
+  <meta name="description" content="Interaktive Wein-Präsentation für Klasse HFU1 – Weinländer, deutsche Gebiete, Rebsorten, Inhaltsstoffe, Oechsle">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' https://unpkg.com https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://*.tile.openstreetmap.org; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🍷</span>
+      <div>
+        <h1>Wein – Überblick</h1>
+        <div class="subtitle">Acim &amp; Erzal · Klasse HFU1</div>
+      </div>
+    </div>
+    <button class="menu-toggle" aria-label="Menü">☰</button>
+    <nav class="main-nav">
+      <button class="nav-btn active" data-tab="tab-start">Start</button>
+      <button class="nav-btn" data-tab="tab-laender">Länder</button>
+      <button class="nav-btn" data-tab="tab-gebiete">DE-Gebiete</button>
+      <button class="nav-btn" data-tab="tab-sorten">Sorten</button>
+      <button class="nav-btn" data-tab="tab-inhalt">Inhaltsstoffe</button>
+      <button class="nav-btn" data-tab="tab-oechsle">Oechsle</button>
+      <button class="nav-btn" data-tab="tab-quellen">Quellen</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- TAB: START -->
+  <section id="tab-start" class="tab-panel active">
+    <div class="hero">
+      <p class="names">👋 Willkommen – Acim und Erzal</p>
+      <h2>Wein – Ein kurzer Überblick</h2>
+      <p>Wein ist ein Getränk aus Trauben. Menschen machen Wein seit über 6.000 Jahren. In dieser Präsentation zeigen wir euch 5 Themen: Weinländer, deutsche Gebiete, Rebsorten, Inhaltsstoffe und den Oechsle-Wert.</p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary" data-goto="tab-laender">🌍 Weinländer</button>
+        <button class="btn btn-secondary" data-goto="tab-gebiete">🇩🇪 Deutsche Gebiete</button>
+      </div>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-item"><div class="num">13</div><div class="lbl">DE-Weingebiete</div></div>
+      <div class="summary-item"><div class="num">65:35</div><div class="lbl">Weiß : Rot (DE)</div></div>
+      <div class="summary-item"><div class="num">1,02 Mio.</div><div class="lbl">ha Spanien (Nr. 1)</div></div>
+      <div class="summary-item"><div class="num">57°Oe</div><div class="lbl">Qualitätswein min.</div></div>
+      <div class="summary-item"><div class="num">#1</div><div class="lbl">E &amp; J Gallo (Produzent)</div></div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">🌍</div><h3>Weinbauländer</h3><p>Europa + Welt-Top-Produzenten – Rebfläche, Ernte, Export &amp; Wirtschaft (Lehrbuch + OIV 2024).</p><button class="btn btn-primary" data-goto="tab-laender" style="margin-top:1rem">Mehr →</button></div>
+      <div class="card"><div class="card-icon">🏭</div><h3>Top Weinproduzenten</h3><p>Die größten Weinunternehmen weltweit – von Gallo bis Antinori. Nach Volumen sortiert.</p><button class="btn btn-primary" data-goto="tab-laender" data-scroll="produzenten-section" style="margin-top:1rem">Mehr →</button></div>
+      <div class="card"><div class="card-icon">🇩🇪</div><h3>13 deutsche Gebiete</h3><p>Von der Ahr bis Sachsen. Kühlstes Klima, 65% Weißwein.</p><button class="btn btn-primary" data-goto="tab-gebiete" style="margin-top:1rem">Mehr →</button></div>
+      <div class="card"><div class="card-icon">🍇</div><h3>Rebsorten</h3><p>Riesling, Spätburgunder, Silvaner und mehr – nur aus Deutschland.</p><button class="btn btn-primary" data-goto="tab-sorten" style="margin-top:1rem">Mehr →</button></div>
+      <div class="card"><div class="card-icon">🔬</div><h3>Inhaltsstoffe</h3><p>Schale, Fruchtfleisch, Zucker, Säure – und wie Rotwein seine Farbe bekommt.</p><button class="btn btn-primary" data-goto="tab-inhalt" style="margin-top:1rem">Mehr →</button></div>
+      <div class="card"><div class="card-icon">📊</div><h3>Oechsle-Wert</h3><p>Deutsche Qualitätsklassen von 44°Oe bis Trockenbeerenauslese.</p><button class="btn btn-primary" data-goto="tab-oechsle" style="margin-top:1rem">Mehr →</button></div>
+    </div>
+
+    <div class="fun-facts">
+      <h3>✨ Fun Facts – Überblick</h3>
+      <ul class="fact-list">
+        <li><span class="fact-emoji">🌍</span><span><strong>Weltweit:</strong> Spanien hat 1.021.000 ha Rebfläche (Nr. 1). Frankreich produziert 20 % des Weltweins (OIV).</span></li>
+        <li><span class="fact-emoji">🇩🇪</span><span><strong>Deutschland:</strong> 13 Weingebiete, 65 % Weißwein. Top 10 bei der Weltproduktion. Rheinhessen ist das größte Gebiet (26.881 ha). Baden liegt in Weinzone B.</span></li>
+        <li><span class="fact-emoji">💎</span><span><strong>Premium-Wein:</strong> Nicht alle deutschen Weine sind billig – VDP.GG-Riesling und Spätburgunder aus Ahr/Baden gehören zu den besten der Welt.</span></li>
+        <li><span class="fact-emoji">🍇</span><span><strong>Riesling:</strong> Ca. 23 % aller deutschen Rebflächen. Die meisten Rieslinge sind heute trocken – nicht süß!</span></li>
+        <li><span class="fact-emoji">📊</span><span><strong>Oechsle:</strong> Misst Zucker im Most. Qualitätswein ab 57°Oe. Hoher Oechsle bedeutet nicht automatisch süßen Wein.</span></li>
+        <li><span class="fact-emoji">🥂</span><span><strong>Schaumwein:</strong> Mindestens 3 bar CO₂-Druck. Echter Champagne nur aus der Champagne-Region in Frankreich.</span></li>
+        <li><span class="fact-emoji">🍾</span><span><strong>Flaschengrößen:</strong> 0,25 l (Piccolo), 0,375 l (Halbe), 0,75 l (Standard), 1,5 l (Magnum).</span></li>
+        <li><span class="fact-emoji">🏭</span><span><strong>Produzenten:</strong> E &amp; J Gallo (USA) ist der größte Weinproduzent der Welt – ca. 94 Mio. 9-l-Kisten pro Jahr.</span></li>
+        <li><span class="fact-emoji">🍷</span><span><strong>Barrique:</strong> 225 Liter = ca. 300 Flaschen. Toastung: leicht = Vanille, stark = bittere Schokolade.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TAB: WEINBAULÄNDER -->
+  <section id="tab-laender" class="tab-panel">
+    <h2 class="section-title">Weinbauländer – Europa &amp; Welt</h2>
+    <p class="section-subtitle">Rebfläche, Ernte, Export &amp; Wirtschaft · Lehrbuch Kap. 6 + OIV World Report 2024</p>
+
+    <div class="data-verification-note card">
+      <h3>📋 Daten &amp; Quellen</h3>
+      <p><strong>Rebfläche &amp; Ernte:</strong> Lehrbuch Kap. 6 (OIV 2014/15) – für die Präsentation bevorzugt.</p>
+      <p><strong>Export, Rankings &amp; Wirtschaft:</strong> OIV „State of the World Vine and Wine Sector in 2024“ (Produktion 2024, Handel 2024).</p>
+      <p><strong>Weinmarkt Deutschland:</strong> Statista (Umsatz 2023, ca. 4,5 Mrd. €). Wo OIV-Werte abweichen, steht „OIV aktuell“ im Detail-Panel.</p>
+    </div>
+
+    <div class="card insight-box" id="country-insight"></div>
+
+    <h3 class="country-section-heading">🇪🇺 Europa – Produktion &amp; Rebfläche</h3>
+    <div class="table-wrapper country-table-wide">
+      <table class="data-table data-table--countries" id="country-table" data-sortable>
+        <thead>
+          <tr>
+            <th data-sort="0">Land</th>
+            <th data-sort="1">Rebfläche (ha)</th>
+            <th data-sort="2">Ernte (Mio. hl)</th>
+            <th data-sort="3">Ertrag (hl/ha)</th>
+            <th data-sort="4">Export</th>
+            <th data-sort="5">Weiß / Rot</th>
+            <th>Besonderheit</th>
+          </tr>
+        </thead>
+        <tbody id="country-table-body"></tbody>
+      </table>
+    </div>
+
+    <h3 class="country-section-heading">🌍 Weltweit – Top-Produzenten</h3>
+    <div class="table-wrapper country-table-wide">
+      <table class="data-table data-table--countries" id="country-table-world" data-sortable>
+        <thead>
+          <tr>
+            <th data-sort="0">Land</th>
+            <th data-sort="1">Rebfläche (ha)</th>
+            <th data-sort="2">Ernte (Mio. hl)</th>
+            <th data-sort="3">Ertrag (hl/ha)</th>
+            <th data-sort="4">Export</th>
+            <th data-sort="5">Weiß / Rot</th>
+            <th>Besonderheit</th>
+          </tr>
+        </thead>
+        <tbody id="country-table-world-body"></tbody>
+      </table>
+    </div>
+
+    <h3 class="country-section-heading">💶 Wirtschaft &amp; Handel</h3>
+    <div class="table-wrapper country-table-wide">
+      <table class="data-table data-table--countries" id="country-economy-table" data-sortable>
+        <thead>
+          <tr>
+            <th data-sort="0">Land</th>
+            <th data-sort="1">Ertrag (hl/ha)</th>
+            <th data-sort="2">Export (Mio. hl)</th>
+            <th data-sort="3">Exportanteil</th>
+            <th data-sort="4">Exportwert</th>
+            <th data-sort="5">Umsatz / Konsum</th>
+          </tr>
+        </thead>
+        <tbody id="country-economy-body"></tbody>
+      </table>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-container">
+        <h3 class="chart-title">📊 Rebfläche Europa (ha)</h3>
+        <div class="bar-chart" id="chart-ha"></div>
+      </div>
+      <div class="chart-container">
+        <h3 class="chart-title">📊 Ernte Europa (Mio. hl)</h3>
+        <div class="bar-chart" id="chart-hl"></div>
+      </div>
+      <div class="chart-container">
+        <h3 class="chart-title">🌍 Ernte weltweit Top 10</h3>
+        <div class="bar-chart" id="chart-world-hl"></div>
+      </div>
+      <div class="chart-container">
+        <h3 class="chart-title">📦 Exportvolumen Top 10</h3>
+        <div class="bar-chart" id="chart-export"></div>
+      </div>
+      <div class="chart-container chart-container--wide">
+        <h3 class="chart-title">💶 Exportwert (Mrd. €, OIV 2024)</h3>
+        <div class="bar-chart" id="chart-export-value"></div>
+      </div>
+    </div>
+
+    <div class="map-section">
+      <div class="world-map-container">
+        <h3 class="chart-title">Klicke ein Land</h3>
+        <p class="country-btn-label">Europa</p>
+        <div class="country-btn-grid" id="country-buttons-europe"></div>
+        <p class="country-btn-label">Weltweit</p>
+        <div class="country-btn-grid" id="country-buttons-world"></div>
+      </div>
+      <div class="country-info" id="country-info">
+        <p style="color:var(--text-light)">Klicke auf ein Land in der Tabelle oder hier für alle Details.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);color:var(--burgundy);margin:2rem 0 1rem">🍾 Flaschen der Weinländer</h3>
+    <div class="bottles-grid" id="bottles-grid" aria-label="Weinflaschen nach Land"></div>
+
+    <div id="produzenten-section" class="producers-section">
+      <h3 style="font-family:var(--font-display);color:var(--burgundy);margin:2.5rem 0 0.5rem">🏭 Top Weinproduzenten weltweit</h3>
+      <p class="section-subtitle" style="margin-bottom:1.5rem">Die größten Weinunternehmen nach Produktionsvolumen und Marktbedeutung · Klicke für Details · Filter nach Land</p>
+
+      <div class="filter-bar">
+        <button class="filter-btn producer-filter active" data-producer-filter="all">Alle</button>
+        <button class="filter-btn producer-filter" data-producer-filter="usa">🇺🇸 USA</button>
+        <button class="filter-btn producer-filter" data-producer-filter="frankreich">🇫🇷 Frankreich</button>
+        <button class="filter-btn producer-filter" data-producer-filter="italien">🇮🇹 Italien</button>
+        <button class="filter-btn producer-filter" data-producer-filter="spanien">🇪🇸 Spanien</button>
+        <button class="filter-btn producer-filter" data-producer-filter="australien">🇦🇺 Australien</button>
+        <button class="filter-btn producer-filter" data-producer-filter="deutschland">🇩🇪 Deutschland</button>
+      </div>
+
+      <div class="map-section">
+        <div class="table-wrapper" style="margin:0">
+          <table class="data-table" id="producer-table">
+            <thead>
+              <tr>
+                <th data-sort="0">Rang</th>
+                <th data-sort="1">Unternehmen</th>
+                <th data-sort="2">Land</th>
+                <th data-sort="3">Hauptsitz</th>
+                <th data-sort="4">Volumen (ca.)</th>
+                <th data-sort="5">Hauptmarken</th>
+              </tr>
+            </thead>
+            <tbody id="producer-table-body"></tbody>
+          </table>
+        </div>
+        <div class="country-info" id="producer-detail">
+          <p style="color:var(--text-light)">Klicke auf einen Produzenten in der Tabelle oder auf eine Karte.</p>
+        </div>
+      </div>
+
+      <div class="card-grid" id="producer-cards" style="margin-top:2rem"></div>
+
+      <div class="chart-container">
+        <h3 style="font-family:var(--font-display);color:var(--burgundy);margin-bottom:1rem">📊 Volumen im Vergleich (Mio. 9-l-Kisten, Schätzung)</h3>
+        <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:1rem">Nur Unternehmen mit vergleichbaren Zahlen. Deutsche Sekt-Hersteller zählen Flaschen – siehe Tabelle.</p>
+        <div class="bar-chart" id="chart-producers"></div>
+      </div>
+
+      <div class="card" style="margin-top:1.5rem">
+        <h3>💡 Wichtig zu wissen</h3>
+        <p><strong>Länder vs. Unternehmen:</strong> Italien, Frankreich und Spanien produzieren am meisten Wein – aber viele kleine Weingüter. Die größten <em>Unternehmen</em> kommen oft aus den USA (Gallo, The Wine Group).</p>
+        <p style="margin-top:0.75rem"><strong>Deutschland:</strong> Rotkäppchen-Mumm und Henkell Freixenet (Dr. Oetker) sind Weltmarktführer bei <em>Sekt</em>, nicht bei Stillwein.</p>
+        <p style="margin-top:0.75rem"><strong>2025:</strong> Vinarchy entstand aus Accolade Wines + Pernod-Ricard-Weinmarken. Constellation verkaufte Massenmarken an The Wine Group.</p>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-top:1rem">Quelle: Vinetur „Global Wine Companies" (2025), OIV, Unternehmensberichte (Gallo, TWE, Castel, Henkell Freixenet, Rotkäppchen-Mumm)</p>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-item open">
+        <button class="accordion-header">🇫🇷 Frankreich – Weinland Nr. 1 <span class="accordion-icon">▼</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          <p><strong>20% der Weltproduktion.</strong> 73% Rot- und Roséwein, 27% Weißwein.</p>
+          <p><strong>Regionen:</strong> Bordeaux, Burgund (Chablis, Côte d'Or, Beaujolais), Rhônetal (Châteauneuf-du-Pape), Loiretal, Elsass (Crémant d'Alsace), Champagne</p>
+          <p><strong>Weiß:</strong> Chardonnay, Sémillon, Sauvignon blanc · <strong>Rot:</strong> Pinot noir, Gamay, Merlot, Cabernet Sauvignon, Syrah</p>
+          <p><strong>Bekannt:</strong> Château Lafite-Rothschild, Moët &amp; Chandon</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">🇪🇸 Spanien – Größte Rebfläche <span class="accordion-icon">▼</span></button>
+        <div class="accordion-body"><div class="accordion-content">
+          <p><strong>17 Weinregionen.</strong> 47% Weißwein, 53% Rotwein.</p>
+          <p><strong>Regionen:</strong> Rioja (DOCa), Navarra, Galicien, Ribera del Duero, Rueda, Penedès, Priorato</p>
+          <p><strong>Weiß:</strong> Airén, Verdejo, Albariño · <strong>Rot:</strong> Tempranillo, Garnacha Tinta, Monastrell</p>
+          <p><strong>Bekannt:</strong> Bodegas Faustino, Miguel Torres, Álvaro Palacios</p>
+          <p><em>Terroir = Einfluss von Klima, Boden und Lage auf den Wein</em></p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="myths-facts-section" data-myths-facts="tab-laender"></div>
+    <p class="inhalt-source-note">Quellen: Lehrbuch Kap. 6 (OIV 2014/15), OIV State of the World 2024, Statista, FEVS, deutscheweine.de</p>
+  </section>
+
+  <!-- TAB: DEUTSCHE GEBIETE -->
+  <section id="tab-gebiete" class="tab-panel">
+    <h2 class="section-title">13 deutsche Weinbaugebiete</h2>
+    <p class="section-subtitle">Südwest-Deutschland · Kühlstes Klima · 65% Weißwein, 35% Rotwein (Rot wird wichtiger)</p>
+
+    <div class="card" style="margin-bottom:2rem">
+      <h3>📐 Aufbau der deutschen Weinlagen</h3>
+      <p><strong>Gebiet</strong> → <strong>Bereich</strong> → <strong>Großlage</strong> → <strong>Einzellage</strong></p>
+      <p style="margin-top:0.5rem;color:var(--text-light)">Im Gegensatz zu Italien, Frankreich und Spanien unterscheidet Deutschland zuerst nach <em>Herkunft</em> (Gebiet), dann nach Qualität.</p>
+    </div>
+
+    <div class="de-map-container">
+      <h3 class="de-map-title">Interaktive Karte – Klicke eine Region</h3>
+      <div class="de-leaflet-wrap">
+        <div id="de-wine-map" class="de-leaflet-map" role="application" aria-label="OpenStreetMap-Karte der 13 deutschen Weinbaugebiete"></div>
+        <p id="de-map-offline" class="de-map-offline" hidden>Karte braucht Internetverbindung</p>
+      </div>
+      <div class="de-map-legend" id="de-map-legend" aria-label="Legende Weinbaugebiete"></div>
+      <div class="country-info" id="region-info">
+        <p style="color:var(--text-light)">Klicke auf eine Region – die Detailsektion öffnet sich unten.</p>
+      </div>
+    </div>
+
+    <div class="accordion regions-accordion">
+      <div class="accordion-item region-accordion-item" id="region-ahr"><button class="accordion-header">Ahr – Spätburgunder im Norden <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Kleinstes Gebiet. Vulkanischer Boden (Schiefer, Basalt). Erste Genossenschaft 1868 in Mayschoß.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">535</div><div class="lbl">Hektar</div></div><div class="stat-box"><div class="num">Rot</div><div class="lbl">Schwerpunkt</div></div></div>
+        <p><strong>Weingüter:</strong> Adeneuer, Deutzerhof, Meyer-Näkel, Stodden</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-baden"><button class="accordion-header">Baden – Burgunder-Hochburg <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Südlichstes Gebiet, 300 km am Rhein. Weinzone B (wärmer). 85% Genossenschaftswein. Kaiserstuhl-Terrassen.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">15.142</div><div class="lbl">Hektar</div></div><div class="stat-box"><div class="num">Zone B</div><div class="lbl">Wärmer</div></div></div>
+        <p><strong>Weingüter:</strong> Dr. Heger, Huber, Ziereisen</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-franken"><button class="accordion-header">Franken – Silvaner &amp; Bocksbeutel <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>81% Weißwein. Silvaner ist die edelste Sorte. 4 von 5 Flaschen werden lokal getrunken. „Fränkisch trocken" &lt; 4 g/l.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">6.107</div><div class="lbl">Hektar</div></div><div class="stat-box"><div class="num">81%</div><div class="lbl">Weißwein</div></div></div>
+        <p><strong>Würzburger Stein:</strong> erste Einzellage (85 ha). <strong>Weingüter:</strong> Bürgerspital, Fürst, Juliusspital</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-wuerttemberg"><button class="accordion-header">Württemberg – Trollinger-Land <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>65% Rotwein – selten in Deutschland! Trollinger, Lemberger (Blaufränkisch), Schwarzriesling.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">10.694</div><div class="lbl">Hektar</div></div><div class="stat-box"><div class="num">65%</div><div class="lbl">Rotwein</div></div></div>
+        <p><strong>Weingüter:</strong> Aldinger, Beurer, Dautel</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-mosel"><button class="accordion-header">Mosel – Steilhänge &amp; Riesling <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Älteste Weinregion. Steile Hänge an Mosel, Saar, Ruwer. Berühmte Lagen: Bernkasteler Doctor.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">8.717</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Dr. Loosen, Egon Müller, Van Volxem</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-rheingau"><button class="accordion-header">Rheingau – Riesling-Hochburg <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Rechtes Rheinufer, Wiesbaden bis Lorch. Schloss Johannisberg ist historisch wichtig.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">3.117</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Robert Weil, Schloss Johannisberg, Georg Breuer</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-rheinhessen"><button class="accordion-header">Rheinhessen – Größtes Gebiet <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>„Land der 1000 Hügel". Größte Rebfläche Deutschlands. Nierstein, Oppenheim bekannt.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">26.881</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Keller, Gunderloch, Wagner-Stempel</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-pfalz"><button class="accordion-header">Pfalz – Deutsche Weinstraße <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Größtes Weinfest der Welt (Bad Dürkheim). Älteste Weinroute. Warmes Klima.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">23.590</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Bürklin-Wolf, von Winning, Müller-Catoir</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-nahe"><button class="accordion-header">Nahe – Vielfältige Böden <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Romantische Flusstäler und dramatische Felsen an der Nahe. Vielfältige Böden: Schiefer, Sandstein, Löss.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">4.202</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Dönnhoff, Emrich-Schönleber, Schäfer-Fröhlich</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-mittelrhein"><button class="accordion-header">Mittelrhein – Burgen am Rhein <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Malerisches Rheintal zwischen Bingen und Bonn. UNESCO-Welterbe Oberes Mittelrheintal.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">467</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> J.J. Adenehr, Toni Jost</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-hessische-bergstrasse"><button class="accordion-header">Hessische Bergstraße – Frühester Frühling <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Kleinstes Gebiet. Mandelblüte im März – Frühling kommt hier zuerst.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">461</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Hessische Staatsweingüter</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-saale-unstrut"><button class="accordion-header">Saale-Unstrut – Nördlichstes Gebiet <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Terrassierte Weinberge an Saale und Unstrut. Weinbau seit über 1000 Jahren. Freyburg ist das Zentrum.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">765</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Winzerhof Gussek, Zahn</p>
+      </div></div></div>
+
+      <div class="accordion-item region-accordion-item" id="region-sachsen"><button class="accordion-header">Sachsen – Östlichstes Gebiet <span class="accordion-icon">▼</span></button><div class="accordion-body"><div class="accordion-content">
+        <p>Weinberge bei Dresden und Meißen. Am 51. Grad nördlicher Breite. Goldriesling ist eine Spezialität.</p>
+        <div class="region-stats"><div class="stat-box"><div class="num">531</div><div class="lbl">Hektar</div></div></div>
+        <p><strong>Weingüter:</strong> Schloss Proschwitz, Wackerbarth</p>
+      </div></div></div>
+    </div>
+
+    <div class="myths-facts-section" data-myths-facts="tab-gebiete"></div>
+    <p style="font-size:0.85rem;color:var(--text-light);margin-top:1rem">Quelle: Lehrbuch Kap. 7, deutscheweine.de, DWI</p>
+  </section>
+
+  <!-- TAB: REBSORTEN -->
+  <section id="tab-sorten" class="tab-panel">
+    <h2 class="section-title">Weiße und rote Rebsorten – Deutschland</h2>
+    <p class="section-subtitle">Nur Sorten aus Deutschland · Quelle: Lehrbuch Kap. 7</p>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Alle</button>
+      <button class="filter-btn" data-filter="white">⬜ Weißwein</button>
+      <button class="filter-btn" data-filter="red">🟥 Rotwein</button>
+    </div>
+
+    <p class="grape-hint">Klicke auf eine Sorte für Details zu Botanik, Aromen, Gastronomie und Fotos.</p>
+
+    <h3 style="font-family:var(--font-display);color:var(--burgundy);margin-bottom:1rem">Weißweinsorten</h3>
+    <div class="grape-grid" id="grape-grid-white"></div>
+
+    <h3 style="font-family:var(--font-display);color:var(--burgundy);margin:2rem 0 1rem">Rotweinsorten</h3>
+    <div class="grape-grid" id="grape-grid-red"></div>
+
+    <div class="myths-facts-section" data-myths-facts="tab-sorten"></div>
+    <p style="font-size:0.85rem;color:var(--text-light);margin-top:1rem">Quelle: Lehrbuch Kap. 7, BMEL-Statistik</p>
+  </section>
+
+  <!-- TAB: INHALTSSTOFFE -->
+  <section id="tab-inhalt" class="tab-panel">
+    <h2 class="section-title">Inhaltsstoffe in Weintrauben</h2>
+    <p class="section-subtitle">Anatomie und Chemie – Klicke auf das Diagramm oder die Karten</p>
+
+    <figure class="anatomy-hero">
+      <img id="anatomy-hero-img" class="anatomy-real-img anatomy-hero-img" src="" alt="" loading="lazy" width="1200" height="700">
+      <figcaption>Weinbeere im Längsschnitt – Schale, Fruchtfleisch und Kern (Vitis vinifera)</figcaption>
+    </figure>
+
+    <div class="anatomy-section">
+      <div class="anatomy-diagram-wrap grape-svg-container">
+        <img id="anatomy-diagram-img" class="anatomy-real-img anatomy-diagram-img" src="" alt="" loading="lazy" width="678" height="585">
+        <div class="anatomy-hotspots" aria-hidden="false">
+          <button type="button" class="anatomy-hotspot anatomy-zone" data-part="schale" style="--hot-top:16%;--hot-left:6%;--hot-w:44%;--hot-h:58%" aria-label="Schale">Schale</button>
+          <button type="button" class="anatomy-hotspot anatomy-zone" data-part="fruchtfleisch" style="--hot-top:30%;--hot-left:16%;--hot-w:26%;--hot-h:32%" aria-label="Fruchtfleisch">Fruchtfleisch</button>
+          <button type="button" class="anatomy-hotspot anatomy-zone" data-part="kerne" style="--hot-top:46%;--hot-left:20%;--hot-w:16%;--hot-h:14%" aria-label="Kerne">Kerne</button>
+          <button type="button" class="anatomy-hotspot anatomy-zone" data-part="strunk" style="--hot-top:70%;--hot-left:26%;--hot-w:10%;--hot-h:24%" aria-label="Strunk">Strunk</button>
+        </div>
+        <p class="anatomy-diagram-caption">Botanisches Diagramm – Klicke auf die markierten Bereiche</p>
+      </div>
+      <div class="anatomy-sidebar">
+        <ul class="component-list component-cards">
+          <li data-part="schale"><strong>Schale</strong><span>Farbe, Tannine, Aromastoffe</span></li>
+          <li data-part="fruchtfleisch"><strong>Fruchtfleisch</strong><span>70–80 % Wasser, Zucker, Säure</span></li>
+          <li data-part="kerne"><strong>Kerne</strong><span>Tannine, Öl – meist nicht im Wein</span></li>
+          <li data-part="strunk"><strong>Strunk</strong><span>Viel Tannin – wird entfernt</span></li>
+          <li data-part="zucker"><strong>Zucker</strong><span>Glucose, Fructose → Alkohol</span></li>
+          <li data-part="saeure"><strong>Säuren</strong><span>Weinsäure, Apfelsäure</span></li>
+          <li data-part="tannine"><strong>Tannine</strong><span>Struktur und Haltbarkeit</span></li>
+          <li data-part="aromastoffe"><strong>Aromastoffe</strong><span>Geruch und Geschmack</span></li>
+          <li data-part="pektin"><strong>Pektin</strong><span>In Zellwänden, Klärung</span></li>
+          <li data-part="mineralstoffe"><strong>Mineralstoffe</strong><span>Terroir, Spuren</span></li>
+        </ul>
+        <div class="anatomy-info" id="anatomy-detail"></div>
+      </div>
+    </div>
+
+    <h3 class="inhalt-section-heading">Chemische Bestandteile</h3>
+    <div class="table-wrapper">
+      <table class="data-table inhalt-chem-table">
+        <thead><tr><th>Stoff</th><th>Funktion</th><th>Anteil (ca.)</th><th>Ort in der Beere</th></tr></thead>
+        <tbody>
+          <tr data-part="fruchtfleisch" class="chem-row"><td>Wasser</td><td>Basis des Mosts</td><td>70–80 %</td><td>Fruchtfleisch</td></tr>
+          <tr data-part="zucker" class="chem-row"><td>Zucker</td><td>Gärung → Alkohol + CO₂</td><td>15–25 %</td><td>Fruchtfleisch</td></tr>
+          <tr data-part="saeure" class="chem-row"><td>Säuren</td><td>Frische, Haltbarkeit</td><td>0,5–1 %</td><td>Fruchtfleisch</td></tr>
+          <tr data-part="tannine" class="chem-row"><td>Tannine</td><td>Struktur, Farbe, Adstringenz</td><td>wenig</td><td>Schale, Kerne</td></tr>
+          <tr data-part="aromastoffe" class="chem-row"><td>Aromastoffe</td><td>Geruch und Geschmack</td><td>sehr wenig</td><td>Schale, Fruchtfleisch</td></tr>
+          <tr data-part="pektin" class="chem-row"><td>Pektin</td><td>Zellstruktur, Klärung</td><td>wenig</td><td>Zellwände</td></tr>
+          <tr data-part="mineralstoffe" class="chem-row"><td>Mineralstoffe</td><td>Terroir-Geschmack</td><td>Spuren</td><td>Gesamt</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="inhalt-section-heading">Rotwein-Produktion</h3>
+    <div class="production-grid">
+      <article class="production-card" data-part="maische">
+        <img id="prod-maische-img" class="production-card-img" src="" alt="" loading="lazy" width="600" height="400">
+        <div class="production-card-body">
+          <h4>Maischegärung</h4>
+          <p>Bei Rotwein gärt der Most <strong>mit Schalen</strong> (= Maische) – oft bis zu 2 Wochen. Anthocyane und Tannine gehen aus der Schale in den Wein. Bei Weißwein wird nur der Most gepresst.</p>
+        </div>
+      </article>
+      <article class="production-card" data-part="bsa">
+        <div class="production-card-body production-card-body--solo">
+          <h4>BSA – Biologischer Säureabbau</h4>
+          <p>Milchsäurebakterien wandeln scharfe <strong>Apfelsäure</strong> in mildere <strong>Milchsäure</strong> um. Der Wein wird weicher und runder – typisch bei vielen Rotweinen.</p>
+        </div>
+      </article>
+      <article class="production-card" data-part="barrique">
+        <img id="prod-barrique-img" class="production-card-img" src="" alt="" loading="lazy" width="600" height="400">
+        <div class="production-card-body">
+          <h4>Barrique &amp; Toastung</h4>
+          <p>Eichenfass mit <strong>225 Liter</strong> (= ca. 300 Flaschen à 0,75 L). Das Holz gibt Aroma und leichten Sauerstoffkontakt.</p>
+          <div class="table-wrapper toast-table-wrap">
+            <table class="data-table toast-table">
+              <thead><tr><th>Toastung</th><th>Aroma</th></tr></thead>
+              <tbody>
+                <tr><td>Leicht</td><td>Vanille</td></tr>
+                <tr><td>Mittel</td><td>Karamell</td></tr>
+                <tr><td>Stark</td><td>Bittere Schokolade</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <figure class="wine-color-compare photo-card">
+      <img id="wine-colors-photo" class="anatomy-real-img section-photo" src="" alt="" loading="lazy" width="900" height="500">
+      <figcaption>Rotwein und Weißwein im Glas – Farbvergleich</figcaption>
+    </figure>
+
+    <div class="myths-facts-section" data-myths-facts="tab-inhalt"></div>
+    <p class="inhalt-source-note">Quelle: Lehrbuch Kap. 6–7, DWI, Delinat · Bilder: Wikimedia Commons (CC)</p>
+  </section>
+
+  <!-- TAB: OECHSLE -->
+  <section id="tab-oechsle" class="tab-panel">
+    <h2 class="section-title">Oechsle-Wert</h2>
+    <p class="section-subtitle">Deutsche Qualitätsklassen – einfach erklärt · Quelle: Lehrbuch Kap. 7</p>
+
+    <div class="card oechsle-intro-card" style="margin-bottom:2rem">
+      <h3>Was ist Oechsle?</h3>
+      <p><strong>Oechsle (°Oe)</strong> misst das <strong>Mostgewicht</strong> – wie schwer der Traubensaft im Vergleich zu Wasser ist. Wasser wiegt 1.000 Gramm pro Liter. <strong>1 °Oe = 1 Gramm mehr</strong> als 1 Liter Wasser. Beispiel: 80 °Oe bedeutet, der Most ist 80 g/l schwerer als Wasser.</p>
+      <p style="margin-top:0.75rem">Mehr Zucker in den Trauben → schwererer Most → <strong>höherer Oechsle-Wert</strong> → reifere Trauben.</p>
+      <ul class="oechsle-fact-list" style="margin-top:0.75rem">
+        <li><strong>Erfinder:</strong> Christian Ferdinand Oechsle, ca. 1836 in Fellbach (Württemberg)</li>
+        <li><strong>Verwendung:</strong> vor allem in Deutschland, Österreich und der Schweiz</li>
+        <li><strong>Wichtig:</strong> Hoher Oechsle bedeutet <em>nicht</em> automatisch süßen Wein!</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom:2rem">
+      <h3>Wie misst man Oechsle?</h3>
+      <p>Winzer messen den Oechsle-Wert <strong>bei der Ernte</strong>, <strong>vor der Gärung</strong> – also am frischen Traubensaft (Most).</p>
+      <div class="oechsle-method-grid">
+        <div class="oechsle-method">
+          <h4>🔬 Refraktometer</h4>
+          <p>Der Winzer tropft einen Tropfen Most auf das Prisma und liest den Wert durch das Okular. Schnell und genau – heute am häufigsten.</p>
+        </div>
+        <div class="oechsle-method">
+          <h4>⚖️ Oechsle-Waage</h4>
+          <p>Ein Schwimmer (Aräometer) schwimmt im Most. Je mehr Zucker, desto höher schwimmt er. Traditionelle Methode.</p>
+        </div>
+      </div>
+      <p style="margin-top:1rem"><strong>Wer nutzt Oechsle?</strong> Winzer, amtliche Prüfer und die Qualitätskontrolle.</p>
+      <ol class="oechsle-steps">
+        <li>Trauben ernten und zu Most pressen</li>
+        <li>Most in ein sauberes Gefäß füllen</li>
+        <li>Refraktometer kalibrieren (mit Wasser)</li>
+        <li>Tropfen Most auf das Prisma geben und durch das Okular lesen</li>
+        <li>Wert notieren – er bestimmt die Qualitätsklasse</li>
+      </ol>
+    </div>
+
+    <div class="photo-grid oechsle-photos">
+      <figure class="photo-card">
+        <img id="refractometer-photo" class="section-photo" src="" alt="" loading="lazy" width="400" height="300">
+        <figcaption>Refraktometer – Winzer tropft Most auf das Prisma und liest °Oe</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <img id="oechsle-label-photo" class="section-photo" src="" alt="" loading="lazy" width="400" height="300">
+        <figcaption>Weinetikett mit deutscher Qualitätsklasse (z. B. Qualitätswein, Kabinett)</figcaption>
+      </figure>
+    </div>
+
+    <div class="card" style="margin-bottom:2rem">
+      <h3>Was sollte jeder wissen?</h3>
+      <ul class="oechsle-fact-list">
+        <li><strong>Höherer Oechsle</strong> = mehr Zucker in den Trauben = reifere Trauben</li>
+        <li>Mehr Zucker kann <strong>mehr Alkohol</strong> <em>oder</em> <strong>süßeren Wein</strong> bedeuten – der Winzer entscheidet!</li>
+        <li>Oechsle bestimmt die deutsche <strong>Qualitätsklasse</strong>, nicht allein den Geschmack</li>
+        <li><strong>Baden (Weinzone B)</strong> braucht höhere Mindestwerte als alle anderen Gebiete (Zone A)</li>
+        <li><strong>Vergleich:</strong> Frankreich und Italien klassifizieren zuerst nach <em>Region</em>. Deutschland zuerst nach Oechsle + Herkunft.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom:2rem">
+      <h3>Einfluss des Oechsle-Werts</h3>
+      <div class="oechsle-influence-grid">
+        <div class="oechsle-influence-item">
+          <h4>🏷️ Qualitätsklasse</h4>
+          <p>Wein ab 44°Oe (Zone A) / 50°Oe (Zone B) · Landwein ab 47°Oe · Qualitätswein ab 57°Oe</p>
+        </div>
+        <div class="oechsle-influence-item">
+          <h4>⭐ Prädikat</h4>
+          <p>Kabinett (67–82) → Spätlese (76–90) → Auslese (83–100) → BA (110–128) → TBA (150–154)</p>
+        </div>
+        <div class="oechsle-influence-item">
+          <h4>🍷 Potenzieller Alkohol</h4>
+          <p>Ca. 0,63 % Alkohol pro 1 °Oe (grob). Höherer Oechsle = mehr Zucker = mehr Alkohol <em>möglich</em></p>
+        </div>
+        <div class="oechsle-influence-item">
+          <h4>💰 Preis</h4>
+          <p>Höhere Prädikate (Spätlese, Auslese, Eiswein) sind oft teurer – weniger Ernte, mehr Arbeit</p>
+        </div>
+        <div class="oechsle-influence-item">
+          <h4>🍽️ Speisen</h4>
+          <p>Kabinett: leicht zu Fisch · Spätlese: zu Käse · Auslese/Eiswein: zu Dessert – kann aber auch <em>trocken</em> sein!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="oechsle-simulator-realistic" id="oechsle-simulator">
+      <h3 class="oechsle-sim-title">🔬 Oechsle-Simulator – wie ein Refraktometer</h3>
+      <p class="oechsle-sim-subtitle">Bewege den Regler oder klicke eine Prädikat-Karte unten</p>
+
+      <div class="oechsle-sim-layout">
+        <div class="hydrometer-panel">
+          <div class="hydrometer-frame">
+            <div class="hydrometer-tube" id="hydrometer-tube">
+              <div class="hydrometer-liquid" id="hydrometer-liquid"></div>
+              <div class="hydrometer-bulb" id="hydrometer-bulb"></div>
+              <div class="hydrometer-scale" aria-hidden="true">
+                <span class="scale-mark" data-oe="150" style="--pos:87.5%">150</span>
+                <span class="scale-mark" data-oe="110" style="--pos:58.3%">110</span>
+                <span class="scale-mark" data-oe="83" style="--pos:35.8%">83</span>
+                <span class="scale-mark" data-oe="76" style="--pos:30%">76</span>
+                <span class="scale-mark" data-oe="67" style="--pos:22.5%">67</span>
+                <span class="scale-mark" data-oe="57" style="--pos:14.2%">57</span>
+                <span class="scale-mark" data-oe="47" style="--pos:5.8%">47</span>
+                <span class="scale-mark" data-oe="44" style="--pos:3.3%">44</span>
+              </div>
+            </div>
+            <div class="hydrometer-vessel">Most</div>
+          </div>
+        </div>
+
+        <div class="oechsle-readouts">
+          <div class="oechsle-value-display" id="oechsle-value">76 °Oe</div>
+          <div class="oechsle-class-badge" id="oechsle-class-badge">Spätlese</div>
+
+          <div class="oechsle-readout-grid">
+            <div class="oechsle-readout-item">
+              <span class="readout-label">Pot. Alkohol</span>
+              <span class="readout-value" id="oechsle-alcohol">~7,6 %</span>
+            </div>
+            <div class="oechsle-readout-item">
+              <span class="readout-label">Zucker (ca.)</span>
+              <span class="readout-value" id="oechsle-sugar">~190 g/l</span>
+            </div>
+            <div class="oechsle-readout-item">
+              <span class="readout-label">Weinzone</span>
+              <span class="readout-value" id="oechsle-zone">Zone A ✓ · Zone B ✓</span>
+            </div>
+          </div>
+
+          <p class="oechsle-taste-note" id="oechsle-taste">Geschmack: kann trocken <strong>ODER</strong> süß sein – der Winzer entscheidet!</p>
+          <p class="oechsle-product-example" id="oechsle-example">Bei 76°Oe: typisch Mosel Spätlese Riesling</p>
+        </div>
+      </div>
+
+      <input type="range" class="oechsle-slider" id="oechsle-slider" min="40" max="160" value="76" aria-label="Oechsle-Wert einstellen">
+      <div class="oechsle-slider-labels"><span>40°Oe</span><span>wenig Zucker</span><span>viel Zucker</span><span>160°Oe</span></div>
+
+      <div class="oechsle-class-badges" id="oechsle-class-badges" aria-label="Qualitätsklassen"></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);color:var(--burgundy);margin:2rem 0 1rem">📋 Beispiele aus der Praxis</h3>
+    <div class="table-wrapper">
+      <table class="data-table oechsle-case-table">
+        <thead><tr><th>Produkt</th><th>°Oe</th><th>Erklärung</th><th></th></tr></thead>
+        <tbody>
+          <tr class="oechsle-case-row" data-oe="70"><td>Mosel Kabinett Riesling</td><td>~70</td><td>Leicht, frisch, oft trocken</td><td><button type="button" class="btn btn-sm oechsle-case-btn">Im Simulator zeigen</button></td></tr>
+          <tr class="oechsle-case-row" data-oe="85"><td>Rheingau Spätlese</td><td>~85</td><td>Reifer, voller, oft halbtrocken</td><td><button type="button" class="btn btn-sm oechsle-case-btn">Im Simulator zeigen</button></td></tr>
+          <tr class="oechsle-case-row" data-oe="95"><td>Pfalz Auslese</td><td>~95</td><td>Selektiert, edel, oft süß</td><td><button type="button" class="btn btn-sm oechsle-case-btn">Im Simulator zeigen</button></td></tr>
+          <tr class="oechsle-case-row" data-oe="115"><td>Eiswein</td><td>110+</td><td>Gefrorene Trauben, sehr süß und selten</td><td><button type="button" class="btn btn-sm oechsle-case-btn">Im Simulator zeigen</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:var(--font-display);color:var(--burgundy);margin:2rem 0 1rem">Deutsche Weingüteklassen</h3>
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead><tr><th>Klasse</th><th>Min. °Oe</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td class="highlight">Wein aus Deutschland</td><td>44 (Zone A) / 50 (Zone B)</td><td>Einfachste Klasse. Zone B = nur Baden. Natürlicher Alkohol: 5% (A) / 6% (B)</td></tr>
+          <tr><td class="highlight">Landwein</td><td>47</td><td>85% Trauben aus der Region. Nur trocken oder halbtrocken. 26 Landweinregionen</td></tr>
+          <tr><td class="highlight">Qualitätswein</td><td>57</td><td>Höchste Klasse mit Prädikaten. Min. Gesamtsäure: 3,5 g/l. Nach Anreicherung: min. 8,5% Vol.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:var(--font-display);color:var(--burgundy);margin:2rem 0 0.5rem">Prädikatsweine</h3>
+    <p style="color:var(--text-light);margin-bottom:1rem;font-size:0.95rem">Klicke eine Karte – der Simulator springt zum typischen Wert</p>
+    <div class="praedikat-grid">
+      <button type="button" class="praedikat-card" data-min="67" data-set="70"><h5>Kabinett</h5><div class="praedikat-oe">67–82 °Oe</div><p>Leicht, frisch</p></button>
+      <button type="button" class="praedikat-card" data-min="76" data-set="76"><h5>Spätlese</h5><div class="praedikat-oe">76–90 °Oe</div><p>Später geerntet</p></button>
+      <button type="button" class="praedikat-card" data-min="83" data-set="90"><h5>Auslese</h5><div class="praedikat-oe">83–100 °Oe</div><p>Sehr reif</p></button>
+      <button type="button" class="praedikat-card" data-min="110" data-set="118"><h5>Beerenauslese</h5><div class="praedikat-oe">110–128 °Oe</div><p>Einzelne Beeren</p></button>
+      <button type="button" class="praedikat-card" data-min="150" data-set="152"><h5>TBA</h5><div class="praedikat-oe">150–154 °Oe</div><p>Getrocknete Beeren</p></button>
+      <button type="button" class="praedikat-card" data-min="110" data-set="115" data-name="Eiswein"><h5>Eiswein</h5><div class="praedikat-oe">ab 110 °Oe</div><p>Gefrorene Trauben</p></button>
+    </div>
+
+    <div class="card" style="margin-top:2rem">
+      <h3>🌍 Internationaler Vergleich</h3>
+      <p>Deutschland nutzt <strong>Oechsle</strong>. Andere Länder: <strong>Brix</strong> (USA, UK), <strong>Baumé</strong> (Frankreich, Spanien), <strong>KMW</strong> (Österreich, Italien). Alle messen dasselbe: Zuckergehalt im Most.</p>
+      <p style="margin-top:0.75rem">Italien, Frankreich und Spanien unterscheiden zuerst nach <em>Herkunft</em> (Region), dann nach Qualität. Deutschland macht es umgekehrt: erst Qualitätsklasse, dann Herkunft.</p>
+    </div>
+
+    <div class="myths-facts-section" data-myths-facts="tab-oechsle"></div>
+    <p style="font-size:0.85rem;color:var(--text-light);margin-top:1rem">Quelle: Lehrbuch Kap. 7, Weinfreunde.de, Weinverordnung</p>
+  </section>
+
+  <!-- TAB: QUELLEN -->
+  <section id="tab-quellen" class="tab-panel">
+    <h2 class="section-title">Quellen &amp; Zusammenfassung</h2>
+    <p class="section-subtitle">Alle Daten mit Quellenangabe</p>
+
+    <div class="fun-facts" style="margin-bottom:2rem">
+      <h3>📝 Zusammenfassung</h3>
+      <ul class="fact-list">
+        <li><span class="fact-emoji">🌍</span><span><strong>Weinländer:</strong> Spanien hat die größte Rebfläche (1,02 Mio. ha). Frankreich produziert 20% des Weltweins.</span></li>
+        <li><span class="fact-emoji">🇩🇪</span><span><strong>Deutschland:</strong> 13 Gebiete, 65% Weißwein. Rheinhessen ist das größte Gebiet. Baden ist in Weinzone B.</span></li>
+        <li><span class="fact-emoji">🍇</span><span><strong>Sorten:</strong> Riesling ist Nr. 1. Spätburgunder ist der wichtigste Rotwein. Trollinger ist typisch für Württemberg.</span></li>
+        <li><span class="fact-emoji">🔬</span><span><strong>Inhaltsstoffe:</strong> Schale gibt Farbe. Zucker wird zu Alkohol. Maischegärung macht Rotwein rot.</span></li>
+        <li><span class="fact-emoji">📊</span><span><strong>Oechsle:</strong> Misst Zucker. Qualitätswein ab 57°Oe. Kabinett ab 67°Oe. Hoher Oechsle ≠ süßer Wein.</span></li>
+        <li><span class="fact-emoji">🏭</span><span><strong>Produzenten:</strong> E &amp; J Gallo (USA) ist der größte Weinproduzent der Welt. Castel (Frankreich) und The Wine Group (USA) folgen.</span></li>
+      </ul>
+    </div>
+
+    <ul class="sources-list">
+      <li>
+        <strong>📘 Primärquelle: Lehrbuch</strong>
+        <div class="source-desc">Alkoholische Getränke und Getränkeausschank, Kap. 6–7 – HFU Gastronomie/Kulinarik</div>
+      </li>
+      <li>
+        <a href="https://www.deutscheweine.de/regionen" target="_blank" rel="noopener">Deutsches Weininstitut (DWI)</a>
+        <div class="source-desc">13 deutsche Weinregionen, Statistiken, Rebflächen</div>
+      </li>
+      <li>
+        <a href="https://www.bmel-statistik.de/landwirtschaft/bodennutzung-und-pflanzliche-erzeugung/weinbau" target="_blank" rel="noopener">BMEL-Statistik – Weinbau</a>
+        <div class="source-desc">Rebflächen, Sortenanteile, Erntemengen 2025</div>
+      </li>
+      <li>
+        <a href="https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Landwirtschaft-Forstwirtschaft-Fischerei/Wein/_inhalt.html" target="_blank" rel="noopener">Statistisches Bundesamt (Destatis)</a>
+        <div class="source-desc">Weinproduktion Deutschland</div>
+      </li>
+      <li>
+        <a href="https://www.oiv.int" target="_blank" rel="noopener">OIV – Internationale Organisation für Rebe und Wein</a>
+        <div class="source-desc">Weltweite Rebflächen und Erntemengen (Europa-Vergleich)</div>
+      </li>
+      <li>
+        <a href="https://www.weinfreunde.de/magazin/frag-die-weinfreunde/was-bedeutet-oechsle/" target="_blank" rel="noopener">Weinfreunde.de – Oechsle</a>
+        <div class="source-desc">Erklärung des Oechsle-Grads und Refraktometer</div>
+      </li>
+      <li>
+        <a href="https://www.delinat.com/oechslegrad.html" target="_blank" rel="noopener">Delinat – Oechslegrad</a>
+        <div class="source-desc">Mostgewicht, Prädikatsstufen</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Crimson_Seedless_berry_and_seed_section_05.jpg" target="_blank" rel="noopener">Wikimedia – Weinbeere Längsschnitt</a>
+        <div class="source-desc">Tab Inhaltsstoffe: Foto Querschnitt (V.Boldychev, CC BY-SA 4.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Wine_grape_diagram_en.svg" target="_blank" rel="noopener">Wikimedia – Weinbeere Diagramm</a>
+        <div class="source-desc">Tab Inhaltsstoffe: Botanisches Diagramm (LadyofHats, Public Domain)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Fermentation_tank_and_cap_management_Smith-Madrone.jpg" target="_blank" rel="noopener">Wikimedia – Maischegärung</a>
+        <div class="source-desc">Tab Inhaltsstoffe: Gärtank mit Schalen (Ian Brown, CC BY 2.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Barrique_Fass_aus_Eiche,_Versuchsgut_Agneshof_des_LFZ_Klosterneuburg.jpg" target="_blank" rel="noopener">Wikimedia – Barrique-Fass</a>
+        <div class="source-desc">Tab Inhaltsstoffe: Eichenfass 225 L (Naturpuur, CC BY-SA 4.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Red_and_white_wine_12-2015.jpg" target="_blank" rel="noopener">Wikimedia – Rot- und Weißwein</a>
+        <div class="source-desc">Tab Inhaltsstoffe: Farbvergleich im Glas (A.Savin, CC BY-SA 3.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:1995_Chateau_Pontet-Canet_dusty_bottle.jpg" target="_blank" rel="noopener">Wikimedia – Bordeaux-Flasche</a>
+        <div class="source-desc">Tab Länder: Frankreich – Château Pontet-Canet (CC BY-SA 2.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Vino_tinto_Vi%C3%B1a_Ardanza_(Labastida,_Rioja_DOCa)_1.jpg" target="_blank" rel="noopener">Wikimedia – Rioja-Flasche</a>
+        <div class="source-desc">Tab Länder: Spanien – Viña Ardanza (CC BY-SA)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Bottiglia_vino_Chianti_di_Montespertoli_1983.jpg" target="_blank" rel="noopener">Wikimedia – Chianti-Flasche</a>
+        <div class="source-desc">Tab Länder: Italien – Chianti di Montespertoli (CC BY-SA 4.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:2007_Selbach-Oster_Graacher_Domprobst_Riesling_Sp%C3%A4tlese_Halbrtocken_from_Mosel_(5360436866).jpg" target="_blank" rel="noopener">Wikimedia – Deutsche Riesling-Flasche</a>
+        <div class="source-desc">Tab Länder: Deutschland – Selbach-Oster Mosel (CC BY-SA 2.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Niepoort_10_Year_Old_Tawny_Port_Wine_(14997329301).jpg" target="_blank" rel="noopener">Wikimedia – Portwein-Flasche</a>
+        <div class="source-desc">Tab Länder: Portugal – Niepoort Tawny Port (CC BY 2.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Dominus_2002.jpg" target="_blank" rel="noopener">Wikimedia – Napa Cabernet</a>
+        <div class="source-desc">Tab Länder: USA – Dominus Estate Napa Valley (CC BY-SA 3.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Errazuriz_Carmenere.jpg" target="_blank" rel="noopener">Wikimedia – Carmenère-Flasche</a>
+        <div class="source-desc">Tab Länder: Chile – Viña Errázuriz (CC BY-SA)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:Charles_Cimicky_Barossa_wine.jpg" target="_blank" rel="noopener">Wikimedia – Barossa-Wein</a>
+        <div class="source-desc">Tab Länder: Australien – Charles Cimicky Barossa Valley (CC BY 2.0)</div>
+      </li>
+      <li>
+        <a href="https://commons.wikimedia.org/wiki/File:La_Finca_Malbec.jpg" target="_blank" rel="noopener">Wikimedia – Malbec-Flasche</a>
+        <div class="source-desc">Tab Länder: Argentinien – La Finca Malbec (CC BY 2.0)</div>
+      </li>
+      <li>
+        <a href="https://www.vinum.eu/de/yoopress-news/vinophiles/2019/weinnationen-im-vergleich/" target="_blank" rel="noopener">Vinum.eu – Weinnationen im Vergleich</a>
+        <div class="source-desc">Internationale Weinländer-Rankings</div>
+      </li>
+      <li>
+        <a href="https://www.vinetur.com/en/2025051487608/the-8-giants-of-world-wine.html" target="_blank" rel="noopener">Vinetur – The 8 Giants of World Wine (2025)</a>
+        <div class="source-desc">Top-Weinunternehmen weltweit: Gallo, The Wine Group, TWE, Castel, Vinarchy u.a.</div>
+      </li>
+      <li>
+        <a href="https://www.rotkaeppchen-mumm.de/en/press/rotkaeppchen-mumm-continues-as-leader-in-the-german-sparkling-wine-and-spirits-market-wines-on-the-road-to-success/" target="_blank" rel="noopener">Rotkäppchen-Mumm – Unternehmensdaten</a>
+        <div class="source-desc">Absatz und Umsatz des deutschen Sekt-Marktführers</div>
+      </li>
+      <li>
+        <a href="https://www.henkell-freixenet.com/en/news/newsroom/detail/henkell-freixenet-2025-stable-revenue-in-a-challenging-market-environment.html" target="_blank" rel="noopener">Henkell Freixenet (Dr. Oetker)</a>
+        <div class="source-desc">Weltmarktführer Schaumwein – Umsatz und Marktposition</div>
+      </li>
+      <li>
+        <a href="https://www.pernod-ricard.com/en/media/successful-completion-sale-pernod-ricard-s-portfolio-strategic-international-wines-australian" target="_blank" rel="noopener">Pernod Ricard – Verkauf Weinportfolio (2025)</a>
+        <div class="source-desc">Fusion zu Vinarchy, Fokus auf Spirituosen und Champagner</div>
+      </li>
+    </ul>
+
+    <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow)">
+      <h3 style="font-family:var(--font-display);color:var(--burgundy)">Danke fürs Zuhören! 🍷</h3>
+      <p style="margin-top:0.5rem;color:var(--text-light)">Acim &amp; Erzal · Klasse HFU1 · Partnerarbeit Wein</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Acim &amp; Erzal, Klasse HFU1 · Daten: Lehrbuch Kap. 6–7, DWI, OIV, BMEL</p>
+</footer>
+
+<div id="grape-modal" class="grape-modal" aria-hidden="true" role="dialog" aria-labelledby="grape-modal-title">
+  <div class="grape-modal-backdrop" data-close-grape></div>
+  <div class="grape-modal-panel" role="document">
+    <button type="button" class="grape-modal-close" aria-label="Schließen" data-close-grape>&times;</button>
+    <div id="grape-modal-content"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
