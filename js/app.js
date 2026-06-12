@@ -243,7 +243,10 @@ const COUNTRIES = {
     hauptsorten: 'Chenin blanc, Pinotage, Cabernet Sauvignon, Shiraz',
     produzenten: 'KWV, Nederburg, Kanonkop',
     sources: ['OIV 2024'],
-    color: '#007A4D', label: 'Pinotage'
+    color: '#007A4D', label: 'Pinotage',
+    regionImage: 'assets/images/countries/suedafrika-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Südafrika',
+    regionImageCaption: 'Südafrikanische Weinregionen – Stellenbosch, Paarl, Franschhoek, Constantia'
   },
   china: {
     name: 'China', flag: '🇨🇳', region: 'welt', ha: 785000, hl: 6.5,
@@ -276,85 +279,10 @@ const COUNTRIES = {
     hauptsorten: 'Sauvignon blanc, Pinot noir, Chardonnay, Riesling',
     produzenten: 'Cloudy Bay, Villa Maria, Oyster Bay',
     sources: ['OIV 2024'],
-    color: '#00247D', label: 'Marlborough SB'
-  }
-};
-
-const COUNTRY_REGION_IMAGES = {
-  spanien: {
-    image: 'assets/images/countries/spanien-regions.jpg',
-    alt: 'Weinbaugebiete Spanien',
-    caption: 'Spanische Weinbaugebiete – Rioja, Katalonien, Andalusien, Galicien u.a.'
-  },
-  frankreich: {
-    image: 'assets/images/countries/frankreich-regions.jpg',
-    alt: 'Weinbaugebiete Frankreich',
-    caption: 'Französische Weinregionen – Bordeaux, Burgund, Champagne, Loire, Rhône, Elsass'
-  },
-  italien: {
-    image: 'assets/images/countries/italien-regions.jpg',
-    alt: 'Weinbaugebiete Italien',
-    caption: 'Italienische DOC-Weinregionen – Toskana, Piemont, Venetien, Sizilien'
-  },
-  deutschland: {
-    image: 'assets/images/countries/deutschland-regions.jpg',
-    alt: 'Deutsche Weinbaugebiete',
-    caption: '13 deutsche Qualitätsweinbaugebiete – Mosel, Rheingau, Pfalz, Baden u.a.'
-  },
-  portugal: {
-    image: 'assets/images/countries/portugal-regions.jpg',
-    alt: 'Weinbaugebiete Portugal',
-    caption: 'Portugiesische Weinregionen – Douro, Alentejo, Vinho Verde, Dão'
-  },
-  griechenland: {
-    image: 'assets/images/countries/griechenland-regions.jpg',
-    alt: 'Weinbaugebiete Griechenland',
-    caption: 'Griechische Weinregionen – Santorini, Nemea, Naoussa, Kreta'
-  },
-  oesterreich: {
-    image: 'assets/images/countries/oesterreich-regions.jpg',
-    alt: 'Weinbaugebiete Österreich',
-    caption: 'Österreichische Weinbaugebiete – Wachau, Burgenland, Steiermark'
-  },
-  tuerkei: {
-    image: 'assets/images/countries/tuerkei-regions.jpg',
-    alt: 'Weinbaugebiete Türkei',
-    caption: 'Türkische Weinregionen – Anatolien, Thrakien, Ägäis'
-  },
-  usa: {
-    image: 'assets/images/countries/usa-regions.jpg',
-    alt: 'Weinbaugebiete USA',
-    caption: 'US-Weinregionen – Napa Valley, Sonoma, Oregon, Washington'
-  },
-  argentinien: {
-    image: 'assets/images/countries/argentinien-regions.jpg',
-    alt: 'Weinbaugebiete Argentinien',
-    caption: 'Argentinische Weinregionen – Mendoza, Salta, Patagonien'
-  },
-  chile: {
-    image: 'assets/images/countries/chile-regions.jpg',
-    alt: 'Weinbaugebiete Chile',
-    caption: 'Chilenische Weinregionen – Maipo, Colchagua, Casablanca, Maule'
-  },
-  australien: {
-    image: 'assets/images/countries/australien-regions.jpg',
-    alt: 'Weinbaugebiete Australien',
-    caption: 'Australische Weinregionen – Barossa Valley, McLaren Vale, Margaret River'
-  },
-  suedafrika: {
-    image: 'assets/images/countries/suedafrika-regions.jpg',
-    alt: 'Weinbaugebiete Südafrika',
-    caption: 'Südafrikanische Weinregionen – Stellenbosch, Paarl, Franschhoek, Constantia'
-  },
-  china: {
-    image: 'assets/images/countries/china-regions.jpg',
-    alt: 'Weinbaugebiete China',
-    caption: 'Chinesische Weinregionen – Ningxia, Shandong, Xinjiang, Yunnan'
-  },
-  neuseeland: {
-    image: 'assets/images/countries/neuseeland-regions.jpg',
-    alt: 'Weinbaugebiete Neuseeland',
-    caption: 'Neuseeländische Weinregionen – Marlborough, Hawke\'s Bay, Central Otago'
+    color: '#00247D', label: 'Marlborough SB',
+    regionImage: 'assets/images/countries/neuseeland-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Neuseeland',
+    regionImageCaption: 'Neuseeländische Weinregionen – Marlborough, Hawke\'s Bay, Central Otago'
   }
 };
 
@@ -2364,11 +2292,10 @@ function renderCountryDetail(key) {
   const oivNote = oivDiffNote(c);
   const exportShare = c.exportHl && c.hl ? Math.round((c.exportHl / c.hl) * 100) : null;
 
-  const regionMap = COUNTRY_REGION_IMAGES[key];
-  const regionMapHtml = regionMap ? `
+  const regionMapHtml = c.regionImage ? `
     <div class="country-region-visual img-frame">
-      <img src="${regionMap.image}" alt="${regionMap.alt}" class="img-perfect country-region-map" loading="lazy">
-      <p class="country-region-caption">${regionMap.caption}</p>
+      <img src="${c.regionImage}" alt="${c.regionImageAlt || `Weinbaugebiete ${c.name}`}" class="img-perfect country-region-map" loading="lazy">
+      ${c.regionImageCaption ? `<p class="country-region-caption">${c.regionImageCaption}</p>` : ''}
     </div>` : '';
 
   info.innerHTML = `
