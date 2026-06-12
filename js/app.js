@@ -654,29 +654,82 @@ const REGIONS = {
   }
 };
 
-const WINE_CITIES = [
-  { name: 'Bad Neuenahr-Ahrweiler', lat: 50.5436, lon: 7.1181, region: 'ahr' },
-  { name: 'Bernkastel-Kues', lat: 49.9158, lon: 7.0689, region: 'mosel' },
-  { name: 'Trier', lat: 49.7596, lon: 6.6442, region: 'mosel' },
-  { name: 'Rüdesheim', lat: 50.0392, lon: 7.9206, region: 'rheingau' },
-  { name: 'Eltville', lat: 50.0286, lon: 8.1172, region: 'rheingau' },
-  { name: 'Mainz', lat: 49.9929, lon: 8.2473, region: 'rheinhessen' },
-  { name: 'Bad Dürkheim', lat: 49.4617, lon: 8.1689, region: 'pfalz' },
-  { name: 'Bad Kreuznach', lat: 49.8475, lon: 7.8669, region: 'nahe' },
-  { name: 'Bingen', lat: 49.9669, lon: 7.8994, region: 'mittelrhein' },
-  { name: 'Heppenheim', lat: 49.6414, lon: 8.6328, region: 'hessische-bergstrasse' },
-  { name: 'Freiburg', lat: 47.9990, lon: 7.8421, region: 'baden' },
-  { name: 'Baden-Baden', lat: 48.7606, lon: 8.2398, region: 'baden' },
-  { name: 'Würzburg', lat: 49.7913, lon: 9.9534, region: 'franken' },
-  { name: 'Stuttgart', lat: 48.7758, lon: 9.1829, region: 'wuerttemberg' },
-  { name: 'Freyburg', lat: 51.2142, lon: 11.7689, region: 'saale-unstrut' },
-  { name: 'Meißen', lat: 51.1632, lon: 13.4717, region: 'sachsen' },
-  { name: 'Dresden', lat: 51.0504, lon: 13.7373, region: 'sachsen' }
-];
+const REGION_CITIES = {
+  ahr: [
+    { name: 'Bad Neuenahr-Ahrweiler', lat: 50.5436, lon: 7.1181 },
+    { name: 'Mayschoß', lat: 50.5170, lon: 7.1310 },
+    { name: 'Altenahr', lat: 50.5172, lon: 7.0044 }
+  ],
+  mosel: [
+    { name: 'Bernkastel-Kues', lat: 49.9158, lon: 7.0689 },
+    { name: 'Trier', lat: 49.7596, lon: 6.6442 },
+    { name: 'Piesport', lat: 49.8725, lon: 6.8928 }
+  ],
+  rheingau: [
+    { name: 'Rüdesheim', lat: 50.0392, lon: 7.9206 },
+    { name: 'Eltville', lat: 50.0286, lon: 8.1172 },
+    { name: 'Johannisberg', lat: 50.0386, lon: 8.0269 }
+  ],
+  rheinhessen: [
+    { name: 'Mainz', lat: 49.9929, lon: 8.2473 },
+    { name: 'Nierstein', lat: 49.8697, lon: 8.3367 },
+    { name: 'Worms', lat: 49.6341, lon: 8.3507 }
+  ],
+  pfalz: [
+    { name: 'Bad Dürkheim', lat: 49.4617, lon: 8.1689 },
+    { name: 'Deidesheim', lat: 49.4089, lon: 8.1850 },
+    { name: 'Landau', lat: 49.1994, lon: 8.1069 }
+  ],
+  nahe: [
+    { name: 'Bad Kreuznach', lat: 49.8475, lon: 7.8669 },
+    { name: 'Norheim', lat: 49.8122, lon: 7.8225 },
+    { name: 'Schlossböckelheim', lat: 49.7936, lon: 7.6789 }
+  ],
+  mittelrhein: [
+    { name: 'Bacharach', lat: 50.0664, lon: 7.7678 },
+    { name: 'Bingen', lat: 49.9669, lon: 7.8994 },
+    { name: 'Koblenz', lat: 50.3569, lon: 7.5890 }
+  ],
+  baden: [
+    { name: 'Freiburg', lat: 47.9990, lon: 7.8421 },
+    { name: 'Baden-Baden', lat: 48.7606, lon: 8.2398 },
+    { name: 'Ihringen', lat: 48.0400, lon: 7.6300 }
+  ],
+  franken: [
+    { name: 'Würzburg', lat: 49.7913, lon: 9.9534 },
+    { name: 'Iphofen', lat: 49.7022, lon: 10.2592 },
+    { name: 'Volkach', lat: 49.8664, lon: 10.2278 }
+  ],
+  wuerttemberg: [
+    { name: 'Stuttgart', lat: 48.7758, lon: 9.1829 },
+    { name: 'Heilbronn', lat: 49.1427, lon: 9.2109 },
+    { name: 'Metzingen', lat: 48.5370, lon: 9.2830 }
+  ],
+  'hessische-bergstrasse': [
+    { name: 'Heppenheim', lat: 49.6414, lon: 8.6328 },
+    { name: 'Bensheim', lat: 49.6833, lon: 8.6167 },
+    { name: 'Zwingenberg', lat: 49.7242, lon: 8.6089 }
+  ],
+  'saale-unstrut': [
+    { name: 'Freyburg', lat: 51.2142, lon: 11.7689 },
+    { name: 'Naumburg', lat: 51.1522, lon: 11.8097 },
+    { name: 'Bad Kösen', lat: 51.1333, lon: 11.6833 }
+  ],
+  sachsen: [
+    { name: 'Dresden', lat: 51.0504, lon: 13.7373 },
+    { name: 'Meißen', lat: 51.1632, lon: 13.4717 },
+    { name: 'Radebeul', lat: 51.1067, lon: 13.6400 }
+  ]
+};
+
+const WINE_CITIES = Object.entries(REGION_CITIES).flatMap(([region, cities]) =>
+  cities.map(city => ({ ...city, region }))
+);
 
 let deWineMap = null;
 let deRegionLayers = {};
 let deSelectedRegionKey = null;
+const regionMiniMaps = {};
 
 function latLonToLeaflet(points) {
   return points.map(([lat, lon]) => [lat, lon]);
@@ -834,6 +887,72 @@ function initDeWineMap() {
 function refreshDeWineMapSize() {
   if (deWineMap) {
     setTimeout(() => deWineMap.invalidateSize(), 100);
+  }
+}
+
+function getRegionKeyFromAccordionItem(item) {
+  return item?.dataset.region || item?.id?.replace(/^region-/, '') || '';
+}
+
+function miniCityMarkerIcon(name) {
+  return L.divIcon({
+    className: 'mini-city-marker',
+    html: `<span class="mini-city-dot"></span><span class="mini-city-label">${name}</span>`,
+    iconSize: [0, 0],
+    iconAnchor: [5, 5]
+  });
+}
+
+function initRegionMiniMap(regionKey) {
+  const container = document.getElementById(`mini-map-${regionKey}`);
+  if (!container || regionMiniMaps[regionKey]) return;
+
+  const region = REGIONS[regionKey];
+  const polygon = REGION_POLYGONS[regionKey];
+  if (!region || !polygon) return;
+
+  if (typeof L === 'undefined') {
+    container.innerHTML = '<p class="mini-map-offline">Karte braucht Internet (Leaflet).</p>';
+    regionMiniMaps[regionKey] = 'offline';
+    return;
+  }
+
+  const map = L.map(container, {
+    center: [region.lat, region.lon],
+    zoom: 10,
+    scrollWheelZoom: false,
+    attributionControl: true,
+    zoomControl: true
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  L.polygon(latLonToLeaflet(polygon), {
+    color: '#4A0E2E',
+    fillColor: region.color,
+    fillOpacity: 0.5,
+    weight: 3
+  }).addTo(map);
+
+  (REGION_CITIES[regionKey] || []).forEach(city => {
+    L.marker([city.lat, city.lon], { icon: miniCityMarkerIcon(city.name), zIndexOffset: 500 })
+      .addTo(map)
+      .bindPopup(`<b>${city.name}</b><br><small>${region.name}</small>`);
+  });
+
+  map.fitBounds(L.latLngBounds(latLonToLeaflet(polygon)), { padding: [24, 24], maxZoom: 11 });
+  regionMiniMaps[regionKey] = map;
+
+  setTimeout(() => map.invalidateSize(), 450);
+}
+
+function refreshRegionMiniMap(regionKey) {
+  const map = regionMiniMaps[regionKey];
+  if (map && typeof map.invalidateSize === 'function') {
+    setTimeout(() => map.invalidateSize(), 450);
   }
 }
 
@@ -2054,12 +2173,14 @@ function initAccordion() {
     header.addEventListener('click', () => {
       const item = header.parentElement;
       const wasOpen = item.classList.contains('open');
-      const regionKey = item.dataset.region;
+      const regionKey = getRegionKeyFromAccordionItem(item);
       document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
       if (!wasOpen) {
         item.classList.add('open');
-        if (regionKey) {
-          document.querySelector(`[data-region="${regionKey}"]:not(.accordion-item)`)?.click();
+        if (regionKey && REGIONS[regionKey]) {
+          initRegionMiniMap(regionKey);
+          refreshRegionMiniMap(regionKey);
+          document.querySelector(`.legend-region[data-region="${regionKey}"]`)?.click();
         }
       }
     });
@@ -2221,7 +2342,7 @@ function renderBottlesGrid() {
     return `
       <div class="bottle-card" data-country="${key}">
         <div class="bottle-photo-wrap">
-          <img src="${photo.local}?v=${WINE_IMAGE_VERSION}" alt="${photo.alt}" class="bottle-product-img" loading="lazy" width="120" height="200">
+          <img src="${photo.local}?v=${WINE_IMAGE_VERSION}" alt="${photo.alt}" class="bottle-product-img img-perfect" loading="lazy" width="120" height="200">
           <div class="bottle-fallback" hidden aria-hidden="true">
             <span class="bottle-fallback-flag">${country.flag}</span>
             <span class="bottle-fallback-label">${photo.label}</span>
@@ -2292,6 +2413,8 @@ function openRegionAccordion(key) {
 
   document.querySelectorAll('#tab-gebiete .region-accordion-item').forEach(i => i.classList.remove('open'));
   item.classList.add('open');
+  initRegionMiniMap(key);
+  refreshRegionMiniMap(key);
   item.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -2307,8 +2430,8 @@ function renderGrapeCard(grape, type) {
   const key = grape.key || grape.photoKey;
   return `
     <div class="grape-card ${type}" data-type="${type}" data-grape-key="${key}" tabindex="0" role="button" aria-label="${grape.name} – Details anzeigen">
-      <div class="grape-img-wrap">
-        <img class="grape-img" src="${grape.img}" alt="${grape.imgAlt || grape.name}" loading="lazy" width="400" height="300">
+      <div class="img-frame grape-img-wrap">
+        <img class="grape-img img-perfect" src="${grape.img}" alt="${grape.imgAlt || grape.name}" loading="lazy" width="400" height="300">
       </div>
       <div class="grape-info">
         <span class="grape-type ${type}">${typeLabel}</span>
@@ -2367,7 +2490,7 @@ function renderGrapeDetailContent(grape) {
     const labels = { cluster: 'Traube', leaf: 'Blatt', vine: 'Rebstock' };
     const src = grape.images?.[kind];
     if (!src) return '';
-    return `<figure><img src="${src}" alt="${grape.name} – ${labels[kind]}" loading="lazy"><figcaption>${labels[kind]}</figcaption></figure>`;
+    return `<figure><div class="img-frame"><img class="img-perfect" src="${src}" alt="${grape.name} – ${labels[kind]}" loading="lazy"></div><figcaption>${labels[kind]}</figcaption></figure>`;
   }).join('');
 
   const mythSection = (grape.mythos || grape.realitaet || grape.funFact) ? `
@@ -2491,15 +2614,18 @@ function initGrapeModal() {
 
 function initRegionImages() {
   Object.entries(REGIONS).forEach(([key, r]) => {
-    const content = document.querySelector(`#region-${key} .accordion-content`);
+    const item = document.getElementById(`region-${key}`);
+    const content = item?.querySelector('.accordion-content');
     if (!content) return;
+
+    if (item) item.dataset.region = key;
 
     let landscapeWrap = content.querySelector('.region-img-wrap:not(.region-map-wrap)');
     if (!landscapeWrap) {
       landscapeWrap = document.createElement('div');
       landscapeWrap.className = 'region-img-wrap';
       const img = document.createElement('img');
-      img.className = 'region-img region-landscape-img';
+      img.className = 'region-img region-landscape-img img-perfect';
       img.loading = 'lazy';
       img.width = 600;
       img.height = 280;
@@ -2508,7 +2634,7 @@ function initRegionImages() {
     }
 
     const landscapeImg = landscapeWrap.querySelector('.region-img');
-    landscapeImg.className = 'region-img region-landscape-img';
+    landscapeImg.className = 'region-img region-landscape-img img-perfect';
     landscapeImg.src = r.landscapeImg || r.mapImg || regionMapSvgDataUri(key);
     landscapeImg.alt = r.imgAlt;
     bindImageFallback(landscapeImg, r.landscapeCdn, r.mapImg, r.imgFallback || FALLBACK_REGION_MAP_IMG);
@@ -2516,19 +2642,28 @@ function initRegionImages() {
     let mapWrap = content.querySelector('.region-map-wrap');
     if (!mapWrap) {
       mapWrap = document.createElement('div');
-      mapWrap.className = 'region-img-wrap region-map-wrap';
-      const mapImg = document.createElement('img');
-      mapImg.className = 'region-img region-map-img';
-      mapImg.loading = 'lazy';
-      mapImg.width = 600;
-      mapImg.height = 200;
-      mapWrap.appendChild(mapImg);
+      mapWrap.className = 'region-map-wrap';
+      const miniMap = document.createElement('div');
+      miniMap.className = 'region-mini-map';
+      miniMap.id = `mini-map-${key}`;
+      miniMap.dataset.region = key;
+      miniMap.setAttribute('role', 'img');
+      miniMap.setAttribute('aria-label', r.mapAlt);
+      mapWrap.appendChild(miniMap);
       landscapeWrap.insertAdjacentElement('afterend', mapWrap);
+    } else {
+      const legacyImg = mapWrap.querySelector('.region-map-img');
+      if (legacyImg) legacyImg.remove();
+      if (!mapWrap.querySelector('.region-mini-map')) {
+        const miniMap = document.createElement('div');
+        miniMap.className = 'region-mini-map';
+        miniMap.id = `mini-map-${key}`;
+        miniMap.dataset.region = key;
+        miniMap.setAttribute('role', 'img');
+        miniMap.setAttribute('aria-label', r.mapAlt);
+        mapWrap.appendChild(miniMap);
+      }
     }
-
-    const mapImg = mapWrap.querySelector('.region-map-img');
-    mapImg.src = r.mapImg || regionMapSvgDataUri(key);
-    mapImg.alt = r.mapAlt;
   });
 }
 

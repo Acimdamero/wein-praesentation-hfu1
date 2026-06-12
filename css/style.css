@@ -33,6 +33,28 @@ body {
   min-height: 100vh;
 }
 
+/* Image display utilities – full image, no crop */
+.img-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 1rem;
+  overflow: visible;
+  min-height: 180px;
+}
+
+.img-frame img,
+.img-perfect {
+  max-width: 100%;
+  max-height: 320px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
 /* Header */
 .site-header {
   background: linear-gradient(135deg, var(--dark-wine) 0%, var(--burgundy) 50%, var(--wine-red) 100%);
@@ -961,7 +983,7 @@ main {
   transition: max-height 0.4s ease;
 }
 
-.accordion-item.open .accordion-body { max-height: 900px; }
+.accordion-item.open .accordion-body { max-height: 1100px; }
 
 .accordion-content {
   padding: 0 1.5rem 1.5rem;
@@ -972,9 +994,13 @@ main {
 .grape-img-wrap {
   position: relative;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 45%, var(--burgundy) 100%);
-  min-height: 140px;
+  min-height: 180px;
 }
 
 .region-img-wrap {
@@ -1003,8 +1029,12 @@ main {
 .section-photo {
   position: relative;
   z-index: 1;
-  width: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  object-position: center;
   border-radius: 8px;
   display: block;
 }
@@ -1014,14 +1044,65 @@ main {
   min-height: 180px;
 }
 
-.accordion-content .region-map-img {
-  max-height: 160px;
-  opacity: 0.95;
-}
-
 .region-map-wrap {
   margin-top: 0.75rem;
-  min-height: 100px;
+}
+
+.region-mini-map {
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid var(--cream-dark);
+  z-index: 1;
+  position: relative;
+  background: var(--cream);
+}
+
+.region-mini-map .leaflet-control-attribution {
+  font-size: 9px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.mini-map-offline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  text-align: center;
+  padding: 1rem;
+}
+
+.mini-city-marker {
+  background: none !important;
+  border: none !important;
+}
+
+.mini-city-marker .mini-city-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: #4A0E2E;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.mini-city-marker .mini-city-label {
+  display: block;
+  margin: 4px 0 0 -50%;
+  transform: translateX(-25%);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--burgundy);
+  text-shadow: 0 0 3px #fff, 0 0 6px #fff, 1px 1px 0 #fff, -1px -1px 0 #fff;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .photo-grid {
@@ -1038,9 +1119,14 @@ main {
   box-shadow: var(--shadow);
 }
 
+.photo-card .img-frame {
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--cream);
+}
+
 .photo-card .section-photo {
-  height: 200px;
-  object-fit: cover;
+  max-height: 280px;
+  object-fit: contain;
 }
 
 .photo-card figcaption {
@@ -1099,12 +1185,12 @@ main {
 .grape-card.red { border-top: 4px solid var(--burgundy); }
 
 .grape-img {
-  height: 140px;
+  max-height: 200px;
 }
 
 .grape-img.fallback,
 .region-img.fallback {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .region-img.img-failed,
@@ -1274,14 +1360,24 @@ main {
   margin: 0;
   background: var(--white);
   border-radius: var(--radius);
-  overflow: hidden;
+  overflow: visible;
   box-shadow: var(--shadow);
 }
 
+.grape-detail-gallery .img-frame {
+  min-height: 160px;
+  padding: 0.75rem;
+  background: var(--cream);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
 .grape-detail-gallery img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
@@ -1400,7 +1496,7 @@ main {
 
 @media (max-width: 700px) {
   .grape-detail-gallery { grid-template-columns: 1fr; }
-  .grape-detail-gallery img { height: 180px; }
+  .grape-detail-gallery img { max-height: 240px; }
   .grape-detail-header h2 { font-size: 1.5rem; }
 }
 
@@ -1437,19 +1533,29 @@ body.grape-modal-open { overflow: hidden; }
 /* Grape Anatomy */
 .anatomy-hero {
   margin: 1.5rem 0 2rem;
+  padding-top: 1rem;
   background: var(--white);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow: visible;
   box-shadow: var(--shadow);
   border: 1px solid var(--cream-dark);
 }
 
+.anatomy-hero .img-frame {
+  background: #faf8f4;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  min-height: 280px;
+  padding: 1.25rem;
+}
+
 .anatomy-hero-img {
-  width: 100%;
-  min-height: 350px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
   max-height: 480px;
   object-fit: contain;
-  background: #faf8f4;
+  object-position: center;
+  background: transparent;
 }
 
 .anatomy-hero figcaption,
@@ -1611,15 +1717,24 @@ body.grape-modal-open { overflow: hidden; }
   transition: var(--transition);
 }
 
+.production-card .img-frame {
+  border-radius: var(--radius) var(--radius) 0 0;
+  min-height: 200px;
+  background: var(--cream);
+}
+
 .production-card.active {
   border-color: var(--gold);
   box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.35);
 }
 
 .production-card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 240px;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
@@ -1652,17 +1767,25 @@ body.grape-modal-open { overflow: hidden; }
 .toast-table { font-size: 0.85rem; }
 
 .wine-color-compare {
-  margin: 2rem 0 1rem;
+  margin: 2.5rem auto 1rem;
+  padding-top: 1rem;
   max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.wine-color-compare .img-frame {
+  min-height: 300px;
+  padding: 1.5rem 1.25rem;
+  background: var(--cream);
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .wine-color-compare .section-photo {
+  width: auto;
   height: auto;
-  min-height: 280px;
+  max-width: 100%;
   max-height: 420px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .inhalt-source-note {
