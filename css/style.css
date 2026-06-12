@@ -554,6 +554,40 @@ main {
   margin-bottom: 1rem;
 }
 
+.country-region-visual {
+  margin: 0 0 1.25rem;
+  width: 100%;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+
+.country-region-map {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.country-region-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+.country-region-fallback {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.map-section .country-info {
+  max-width: 100%;
+}
+
 .country-info .info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -26,6 +26,9 @@ const COUNTRIES = {
     produzenten: 'Bodegas Faustino, Miguel Torres, Álvaro Palacios',
     terroir: 'Terroir = Einfluss von Klima, Boden und Lage auf den Wein',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024'],
+    regionImage: 'assets/images/countries/spanien-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Spanien',
+    regionImageCaption: 'Spanische Weinbaugebiete – Rioja, Katalonien, Andalusien, Galicien u.a.',
     color: '#C41E3A', label: 'Rioja'
   },
   frankreich: {
@@ -41,6 +44,9 @@ const COUNTRIES = {
     hauptsorten: 'Weiß: Chardonnay, Sémillon, Sauvignon blanc · Rot: Pinot noir, Merlot, Cabernet, Syrah',
     produzenten: 'Château Lafite-Rothschild, Moët & Chandon, Groupe Castel',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024', 'FEVS 2024'],
+    regionImage: 'assets/images/countries/frankreich-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Frankreich',
+    regionImageCaption: 'Französische Weinregionen – Bordeaux, Burgund, Champagne, Loire, Rhône, Elsass',
     color: '#1E3A5F', label: 'Bordeaux'
   },
   italien: {
@@ -56,6 +62,9 @@ const COUNTRIES = {
     hauptsorten: 'Sangiovese, Primitivo, Nebbiolo, Pinot grigio, Prosecco (Glera)',
     produzenten: 'Antinori, Gaja, Ferrari (Sekt), Zonin',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024'],
+    regionImage: 'assets/images/countries/italien-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Italien',
+    regionImageCaption: 'Italienische DOC-Weinregionen – Toskana, Piemont, Venetien, Sizilien',
     color: '#008C45', label: 'Chianti'
   },
   deutschland: {
@@ -72,7 +81,10 @@ const COUNTRIES = {
     hauptsorten: 'Riesling, Spätburgunder, Müller-Thurgau, Silvaner, Dornfelder',
     produzenten: 'Dr. Loosen, Robert Weil, Henkell Freixenet, Rotkäppchen-Mumm',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024', 'Statista 2023'],
-    color: '#4A3728', label: 'Riesling'
+    color: '#4A3728', label: 'Riesling',
+    regionImage: 'assets/images/countries/deutschland-regions.jpg',
+    regionImageAlt: 'Deutsche Weinbaugebiete',
+    regionImageCaption: '13 deutsche Qualitätsweinbaugebiete – Mosel, Rheingau, Pfalz, Baden u.a.'
   },
   portugal: {
     name: 'Portugal', flag: '🇵🇹', region: 'europa', ha: 229000, hl: 6.2,
@@ -87,7 +99,10 @@ const COUNTRIES = {
     hauptsorten: 'Touriga Nacional, Tinta Roriz, Alvarinho, Trincadeira',
     produzenten: 'Cálem, Sandeman, Quinta do Noval, Sogrape',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024'],
-    color: '#006600', label: 'Porto'
+    color: '#006600', label: 'Porto',
+    regionImage: 'assets/images/countries/portugal-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Portugal',
+    regionImageCaption: 'Portugiesische Weinregionen – Douro, Alentejo, Vinho Verde, Dão'
   },
   griechenland: {
     name: 'Griechenland', flag: '🇬🇷', region: 'europa', ha: 110000, hl: 2.9,
@@ -102,7 +117,10 @@ const COUNTRIES = {
     hauptsorten: 'Assyrtiko, Agiorgitiko, Xinomavro, Moschofilero',
     produzenten: 'Gaia Wines, Kir-Yianni, Boutari',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024'],
-    color: '#0D5EAF', label: 'Assyrtiko'
+    color: '#0D5EAF', label: 'Assyrtiko',
+    regionImage: 'assets/images/countries/griechenland-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Griechenland',
+    regionImageCaption: 'Griechische Weinregionen – Santorini, Nemea, Naoussa, Kreta'
   },
   oesterreich: {
     name: 'Österreich', flag: '🇦🇹', region: 'europa', ha: 46000, hl: 2,
@@ -117,7 +135,10 @@ const COUNTRIES = {
     hauptsorten: 'Grüner Veltliner, Zweigelt, Blaufränkisch, Riesling',
     produzenten: 'F.X. Pichler, Loimer, Bründlmayer',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024'],
-    color: '#ED1C24', label: 'Grüner Veltliner'
+    color: '#ED1C24', label: 'Grüner Veltliner',
+    regionImage: 'assets/images/countries/oesterreich-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Österreich',
+    regionImageCaption: 'Österreichische Weinbaugebiete – Wachau, Burgenland, Steiermark'
   },
   tuerkei: {
     name: 'Türkei', flag: '🇹🇷', region: 'europa', ha: 504000, hl: 0.3,
@@ -132,7 +153,10 @@ const COUNTRIES = {
     hauptsorten: 'Öküzgözü, Boğazkere, Emir, Narince',
     produzenten: 'Kavaklıdere, Doluca, Sevilen',
     sources: ['Lehrbuch Kap. 6', 'OIV 2024'],
-    color: '#E30A17', label: 'Anatolien'
+    color: '#E30A17', label: 'Anatolien',
+    regionImage: 'assets/images/countries/tuerkei-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Türkei',
+    regionImageCaption: 'Türkische Weinregionen – Anatolien, Thrakien, Ägäis'
   },
   usa: {
     name: 'USA', flag: '🇺🇸', region: 'welt', ha: 412000, hl: 23.3,
@@ -147,7 +171,10 @@ const COUNTRIES = {
     hauptsorten: 'Cabernet Sauvignon, Chardonnay, Pinot noir, Zinfandel',
     produzenten: 'E & J Gallo, The Wine Group, Robert Mondavi',
     sources: ['OIV 2024'],
-    color: '#3C3B6E', label: 'Napa Cabernet'
+    color: '#3C3B6E', label: 'Napa Cabernet',
+    regionImage: 'assets/images/countries/usa-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete USA',
+    regionImageCaption: 'US-Weinregionen – Napa Valley, Sonoma, Oregon, Washington'
   },
   argentinien: {
     name: 'Argentinien', flag: '🇦🇷', region: 'welt', ha: 218000, hl: 11.8,
@@ -162,7 +189,10 @@ const COUNTRIES = {
     hauptsorten: 'Malbec, Bonarda, Torrontés, Cabernet Sauvignon',
     produzenten: 'Catena Zapata, Bodega Norton, Trapiche',
     sources: ['OIV 2024'],
-    color: '#75AADB', label: 'Malbec'
+    color: '#75AADB', label: 'Malbec',
+    regionImage: 'assets/images/countries/argentinien-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Argentinien',
+    regionImageCaption: 'Argentinische Weinregionen – Mendoza, Salta, Patagonien'
   },
   chile: {
     name: 'Chile', flag: '🇨🇱', region: 'welt', ha: 190000, hl: 12.5,
@@ -177,7 +207,10 @@ const COUNTRIES = {
     hauptsorten: 'Cabernet Sauvignon, Carmenère, Sauvignon blanc, Merlot',
     produzenten: 'Concha y Toro, Montes, Santa Rita',
     sources: ['OIV 2024'],
-    color: '#D52B1E', label: 'Carmenère'
+    color: '#D52B1E', label: 'Carmenère',
+    regionImage: 'assets/images/countries/chile-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Chile',
+    regionImageCaption: 'Chilenische Weinregionen – Maipo, Colchagua, Casablanca, Maule'
   },
   australien: {
     name: 'Australien', flag: '🇦🇺', region: 'welt', ha: 146000, hl: 12.5,
@@ -192,7 +225,10 @@ const COUNTRIES = {
     hauptsorten: 'Shiraz, Cabernet Sauvignon, Chardonnay, Riesling',
     produzenten: 'Penfolds, Treasury Wine Estates, Jacob\'s Creek, Hardys',
     sources: ['OIV 2024'],
-    color: '#FFCD00', label: 'Barossa Shiraz'
+    color: '#FFCD00', label: 'Barossa Shiraz',
+    regionImage: 'assets/images/countries/australien-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete Australien',
+    regionImageCaption: 'Australische Weinregionen – Barossa Valley, McLaren Vale, Margaret River'
   },
   suedafrika: {
     name: 'Südafrika', flag: '🇿🇦', region: 'welt', ha: 125000, hl: 10.4,
@@ -222,7 +258,10 @@ const COUNTRIES = {
     hauptsorten: 'Cabernet Gernischt, Cabernet Sauvignon, Merlot, Chardonnay',
     produzenten: 'Changyu, Great Wall, Dynasty',
     sources: ['OIV 2024'],
-    color: '#DE2910', label: 'Ningxia'
+    color: '#DE2910', label: 'Ningxia',
+    regionImage: 'assets/images/countries/china-regions.jpg',
+    regionImageAlt: 'Weinbaugebiete China',
+    regionImageCaption: 'Chinesische Weinregionen – Ningxia, Shandong, Xinjiang, Yunnan'
   },
   neuseeland: {
     name: 'Neuseeland', flag: '🇳🇿', region: 'welt', ha: 40000, hl: 3.2,
@@ -238,6 +277,84 @@ const COUNTRIES = {
     produzenten: 'Cloudy Bay, Villa Maria, Oyster Bay',
     sources: ['OIV 2024'],
     color: '#00247D', label: 'Marlborough SB'
+  }
+};
+
+const COUNTRY_REGION_IMAGES = {
+  spanien: {
+    image: 'assets/images/countries/spanien-regions.jpg',
+    alt: 'Weinbaugebiete Spanien',
+    caption: 'Spanische Weinbaugebiete – Rioja, Katalonien, Andalusien, Galicien u.a.'
+  },
+  frankreich: {
+    image: 'assets/images/countries/frankreich-regions.jpg',
+    alt: 'Weinbaugebiete Frankreich',
+    caption: 'Französische Weinregionen – Bordeaux, Burgund, Champagne, Loire, Rhône, Elsass'
+  },
+  italien: {
+    image: 'assets/images/countries/italien-regions.jpg',
+    alt: 'Weinbaugebiete Italien',
+    caption: 'Italienische DOC-Weinregionen – Toskana, Piemont, Venetien, Sizilien'
+  },
+  deutschland: {
+    image: 'assets/images/countries/deutschland-regions.jpg',
+    alt: 'Deutsche Weinbaugebiete',
+    caption: '13 deutsche Qualitätsweinbaugebiete – Mosel, Rheingau, Pfalz, Baden u.a.'
+  },
+  portugal: {
+    image: 'assets/images/countries/portugal-regions.jpg',
+    alt: 'Weinbaugebiete Portugal',
+    caption: 'Portugiesische Weinregionen – Douro, Alentejo, Vinho Verde, Dão'
+  },
+  griechenland: {
+    image: 'assets/images/countries/griechenland-regions.jpg',
+    alt: 'Weinbaugebiete Griechenland',
+    caption: 'Griechische Weinregionen – Santorini, Nemea, Naoussa, Kreta'
+  },
+  oesterreich: {
+    image: 'assets/images/countries/oesterreich-regions.jpg',
+    alt: 'Weinbaugebiete Österreich',
+    caption: 'Österreichische Weinbaugebiete – Wachau, Burgenland, Steiermark'
+  },
+  tuerkei: {
+    image: 'assets/images/countries/tuerkei-regions.jpg',
+    alt: 'Weinbaugebiete Türkei',
+    caption: 'Türkische Weinregionen – Anatolien, Thrakien, Ägäis'
+  },
+  usa: {
+    image: 'assets/images/countries/usa-regions.jpg',
+    alt: 'Weinbaugebiete USA',
+    caption: 'US-Weinregionen – Napa Valley, Sonoma, Oregon, Washington'
+  },
+  argentinien: {
+    image: 'assets/images/countries/argentinien-regions.jpg',
+    alt: 'Weinbaugebiete Argentinien',
+    caption: 'Argentinische Weinregionen – Mendoza, Salta, Patagonien'
+  },
+  chile: {
+    image: 'assets/images/countries/chile-regions.jpg',
+    alt: 'Weinbaugebiete Chile',
+    caption: 'Chilenische Weinregionen – Maipo, Colchagua, Casablanca, Maule'
+  },
+  australien: {
+    image: 'assets/images/countries/australien-regions.jpg',
+    alt: 'Weinbaugebiete Australien',
+    caption: 'Australische Weinregionen – Barossa Valley, McLaren Vale, Margaret River'
+  },
+  suedafrika: {
+    image: 'assets/images/countries/suedafrika-regions.jpg',
+    alt: 'Weinbaugebiete Südafrika',
+    caption: 'Südafrikanische Weinregionen – Stellenbosch, Paarl, Franschhoek, Constantia'
+  },
+  china: {
+    image: 'assets/images/countries/china-regions.jpg',
+    alt: 'Weinbaugebiete China',
+    caption: 'Chinesische Weinregionen – Ningxia, Shandong, Xinjiang, Yunnan'
+  },
+  neuseeland: {
+    image: 'assets/images/countries/neuseeland-regions.jpg',
+    alt: 'Weinbaugebiete Neuseeland',
+    caption: 'Neuseeländische Weinregionen – Marlborough, Hawke\'s Bay, Central Otago'
   }
 };
 
@@ -1695,10 +1812,10 @@ const GENERAL_PHOTOS = {
 const INHALT_PHOTOS = {
   crossSection: GENERAL_PHOTOS.grapeAnatomy,
   diagram: {
-    local: 'assets/images/general/grape-anatomy-de.svg',
-    cdn: 'assets/images/general/grape-anatomy-de.svg',
-    alt: 'Botanisches Diagramm der Weinbeere – Schale, Fruchtfleisch, Kern, Presszonen (deutsch beschriftet)',
-    source: 'Wikimedia Commons – LadyofHats, Public Domain · Deutsche Beschriftung'
+    local: 'assets/images/general/grape-anatomy-labeled.svg',
+    cdn: 'https://commons.wikimedia.org/wiki/Special:FilePath/Wine_grape_diagram_en.svg',
+    alt: 'Botanisches Diagramm der Weinbeere – Exocarp, Mesocarp, Samen',
+    source: 'Wikimedia Commons – LadyofHats, Public Domain'
   },
   cluster: {
     local: 'assets/images/general/grape-cluster.jpg',
@@ -2247,8 +2364,16 @@ function renderCountryDetail(key) {
   const oivNote = oivDiffNote(c);
   const exportShare = c.exportHl && c.hl ? Math.round((c.exportHl / c.hl) * 100) : null;
 
+  const regionMap = COUNTRY_REGION_IMAGES[key];
+  const regionMapHtml = regionMap ? `
+    <div class="country-region-visual img-frame">
+      <img src="${regionMap.image}" alt="${regionMap.alt}" class="img-perfect country-region-map" loading="lazy">
+      <p class="country-region-caption">${regionMap.caption}</p>
+    </div>` : '';
+
   info.innerHTML = `
     <h4>${c.flag} ${c.name}</h4>
+    ${regionMapHtml}
     <p style="margin-bottom:1rem;color:var(--text-light)">${c.note}</p>
     <div class="info-grid country-detail-grid">
       <div class="info-item"><div class="label">Rebfläche (Lehrbuch)</div><div class="value">${c.ha.toLocaleString('de-DE')} ha</div></div>
@@ -2270,6 +2395,19 @@ function renderCountryDetail(key) {
     ${c.terroir ? `<p style="margin-top:0.5rem;font-style:italic;color:var(--gold)">${c.terroir}</p>` : ''}
     <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-light)">Quellen: ${(c.sources || ['Lehrbuch Kap. 6']).join(', ')}</p>
   `;
+
+  const regionImg = info.querySelector('.country-region-map');
+  if (regionImg) bindCountryRegionImageFallback(regionImg, key);
+}
+
+function bindCountryRegionImageFallback(img, countryKey) {
+  const country = COUNTRIES[countryKey];
+  if (!country) return;
+  img.addEventListener('error', () => {
+    const visual = img.closest('.country-region-visual');
+    if (!visual) return;
+    visual.innerHTML = `<p class="country-region-fallback">${country.flag} Weinregionen-Karte nicht verfügbar – siehe Regionenliste unten.</p>`;
+  }, { once: true });
 }
 
 function renderCountryTableBody(tbodyId, keys) {
