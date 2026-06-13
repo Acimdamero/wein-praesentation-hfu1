@@ -26,11 +26,11 @@ download spanien-regions.jpg \
 
 # Italy – labeled wine regions
 download italien-regions.jpg \
-  "https://upload.wikimedia.org/wikipedia/commons/4/4e/Italian_Wine_Regions.jpg"
+  "https://upload.wikimedia.org/wikipedia/commons/5/52/Italian_Wine_Regions.jpg"
 
 # Germany – Weinbaugebiete DAC map (German)
 download deutschland-regions.jpg \
-  "https://upload.wikimedia.org/wikipedia/commons/4/4a/Weinbaugebiete_okt_2019_nur_dac.jpg"
+  "https://upload.wikimedia.org/wikipedia/commons/1/14/Weinbaugebiete_okt_2019_nur_dac.jpg"
 
 # Portugal – DOC regions map
 download portugal-regions.jpg \
@@ -42,15 +42,15 @@ download griechenland-regions.jpg \
 
 # Austria – DAC Weinbaugebiete (German)
 download oesterreich-regions.jpg \
-  "https://upload.wikimedia.org/wikipedia/commons/4/4a/Weinbaugebiete_okt_2019_nur_dac.jpg"
+  "https://upload.wikimedia.org/wikipedia/commons/1/14/Weinbaugebiete_okt_2019_nur_dac.jpg"
 
 # Turkey – labeled regions
 download tuerkei-regions.jpg \
   "https://upload.wikimedia.org/wikipedia/commons/8/8d/Turkish_wine_regions_map.png"
 
-# USA – Oregon AVAs (representative US wine map; CA/Napa in caption)
+# USA – Oregon AVAs (labeled; CA/Napa in caption)
 download usa-regions.jpg \
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Oregon_AVAs.png/1280px-Oregon_AVAs.png"
+  "https://upload.wikimedia.org/wikipedia/commons/8/8c/Oregon_AVAs.png"
 
 # Chile – national wine regions highlighted
 download chile-regions.jpg \
@@ -74,7 +74,7 @@ download china-regions.jpg \
 
 # New Zealand – wine regions
 download neuseeland-regions.jpg \
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/New_zealand_wine_map.svg/1280px-New_zealand_wine_map.svg.png"
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/New_zealand_wine_map.svg/1280px-New_zealand_wine_map.svg.png"
 
 echo "Done. Verifying..."
 for f in *.jpg; do

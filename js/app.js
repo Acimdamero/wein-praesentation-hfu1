@@ -28,7 +28,7 @@ const COUNTRIES = {
     sources: ['Lehrbuch Kap. 6', 'OIV 2024'],
     regionImage: 'assets/images/countries/spanien-regions.jpg',
     regionImageAlt: 'Weinbaugebiete Spanien',
-    regionImageCaption: 'Spanische Weinbaugebiete – Rioja, Katalonien, Andalusien, Galicien u.a.',
+    regionImageCaption: 'Spanische Wein-DOs – Galicien, La Rioja, Katalonien, Andalusien, Kanaren, Balearen u.a.',
     color: '#C41E3A', label: 'Rioja'
   },
   frankreich: {
